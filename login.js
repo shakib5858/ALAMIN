@@ -1,20 +1,22 @@
-const ADMIN_EMAIL = 'babuhalim22@gmail.com';
-const ADMIN_PASSWORD = 'shSHACIB';
+async function handleGoogleSignIn(response) {
+  const id_token = response.credential;
+  
+  try {
+    const googleUser = await verifyGoogleToken(id_token);
+    sessionStorage.setItem('googleUser', JSON.stringify(googleUser));
+    sessionStorage.setItem('isLoggedIn', 'true');
+    await initializeGapiClient();
+    window.location.href = 'index.html';
+  } catch (error) {
+    console.error('Google Sign-In failed:', error);
+    alert('গুগল সাইন-ইন ব্যর্থ হয়েছে');
+  }
+}
 
-function handleLogin(event) {
-    event.preventDefault();
-    
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    
-    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-        // Store login status
-        sessionStorage.setItem('isLoggedIn', 'true');
-        // Redirect to main page
-        window.location.href = 'index.html';
-    } else {
-        alert('ইমেইল অথবা পাসওয়ার্ড ভুল!');
-    }
+async function verifyGoogleToken(token) {
+  const response = await fetch('https://oauth2.googleapis.com/tokeninfo?id_token=' + token);
+  if (!response.ok) throw new Error('টোকেন যাচাইয়ের ব্যর্থতা');
+  return response.json();
 }
 
 // Check login status when loading any page
@@ -31,8 +33,13 @@ function checkAuth() {
 
 // Add logout function
 function logout() {
-    sessionStorage.removeItem('isLoggedIn');
-    window.location.href = 'login.html';
+  sessionStorage.removeItem('googleUser');
+  sessionStorage.removeItem('isLoggedIn');
+  if (gapi.auth2) {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut();
+  }
+  window.location.href = 'login.html';
 }
 
 // Check auth on page load
@@ -88,6 +95,12 @@ const salaryModal = new bootstrap.Modal(document.getElementById('salaryModal'));
 
 // Constants
 const dailyRate = 1000; // 1000 Taka per day
+
+// Test user configuration
+const TEST_USERS = [
+  'babuhalim22@gmail.com',
+  // Add other authorized emails
+];
 
 // Data Storage
 let employees = getEmployees();
@@ -1146,4 +1159,181 @@ function exportDataAsCSV(dataType) {
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
+}
+const CLIENT_ID = 'YOUR_CLIENT_ID';
+const API_KEY = 'YOUR_API_KEY';
+const SCOPES = 'https://www.googleapis.com/auth/drive.file';
+
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+
+function gapiLoaded() {
+    gapi.load('client', initializeGapiClient);
+}
+
+async function initializeGapiClient() {
+    await gapi.client.init({
+        apiKey: API_KEY,
+        discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'],
+    });
+    gapiInited = true;
+    maybeEnableButtons();
+}
+
+function gisLoaded() {
+    tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        callback: '', // defined later
+    });
+    gisInited = true;
+    maybeEnableButtons();
+}
+
+function maybeEnableButtons() {
+    if (gapiInited && gisInited) {
+        document.getElementById('syncButton').style.display = 'block';
+    }
+}
+
+async function backupToGDrive() {
+    const data = {
+        employees: localStorage.getItem('employees'),
+        attendanceRecords: localStorage.getItem('attendanceRecords'),
+        salaryRecords: localStorage.getItem('salaryRecords'),
+        deletedItems: localStorage.getItem('deletedItems')
+    };
+
+    const file = new Blob([JSON.stringify(data)], {type: 'application/json'});
+    const metadata = {
+        name: `alamin_backup_${new Date().toISOString().split('T')[0]}.json`,
+        mimeType: 'application/json'
+    };
+
+    try {
+        const accessToken = await tokenClient.requestAccessToken();
+        const form = new FormData();
+        form.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
+        form.append('file', file);
+
+        await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken.access_token}`,
+            },
+            body: form
+        });
+
+        alert('Backup successful!');
+    } catch (err) {
+        console.error('Error during backup:', err);
+        alert('Backup failed. Please try again.');
+    }
+}
+
+async function restoreFromGDrive() {
+    try {
+        const accessToken = await tokenClient.requestAccessToken();
+        const response = await gapi.client.drive.files.list({
+            q: "name contains 'alamin_backup_' and mimeType='application/json'",
+            orderBy: 'createdTime desc',
+            pageSize: 1
+        });
+
+        if (response.result.files.length > 0) {
+            const file = response.result.files[0];
+            const fileData = await gapi.client.drive.files.get({
+                fileId: file.id,
+                alt: 'media'
+            });
+
+            const data = JSON.parse(fileData.body);
+            localStorage.setItem('employees', data.employees);
+            localStorage.setItem('attendanceRecords', data.attendanceRecords);
+            localStorage.setItem('salaryRecords', data.salaryRecords);
+            localStorage.setItem('deletedItems', data.deletedItems);
+
+            alert('Restore successful! Please refresh the page.');
+            window.location.reload();
+        } else {
+            alert('No backup found!');
+        }
+    } catch (err) {
+        console.error('Error during restore:', err);
+        alert('Restore failed. Please try again.');
+    }
+}
+
+async function syncWithDrive() {
+  try {
+    const response = await gapi.client.drive.files.list({
+      q: "name='employee_data.json' and trashed=false",
+      spaces: 'drive',
+      fields: 'files(id, name)'
+    });
+
+    if (response.result.files.length > 0) {
+      // File exists - download and merge data
+      await restoreFromGDrive();
+    } else {
+      // First sync - create new file
+      await backupToGDrive();
+    }
+    setupAutoSync();
+  } catch (error) {
+    console.error('Sync failed:', error);
+  }
+}
+
+function setupAutoSync() {
+  // Sync on data changes
+  const originalSave = saveEmployees;
+  saveEmployees = function(...args) {
+    originalSave.apply(this, args);
+    backupToGDrive();
+  };
+}
+
+// Add these new functions
+async function initializeGapiClient() {
+  await gapi.client.init({
+    apiKey: 'YOUR_GOOGLE_API_KEY',
+    discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'],
+    clientId: 'YOUR_GOOGLE_CLIENT_ID',
+    scope: 'https://www.googleapis.com/auth/drive.file'
+  });
+}
+
+async function handleDriveSync() {
+  const fileContent = JSON.stringify({
+    employees: getEmployees(),
+    attendance: getAttendanceRecords(),
+    salaries: getSalaryRecords()
+  });
+
+  try {
+    const file = await findOrCreateDriveFile();
+    await updateDriveFile(file.id, fileContent);
+    console.log('Sync successful');
+  } catch (error) {
+    console.error('Drive sync error:', error);
+    alert('সিঙ্ক্রোনাইজেশন ব্যর্থ হয়েছে');
+  }
+}
+
+async function findOrCreateDriveFile() {
+  const response = await gapi.client.drive.files.list({
+    q: "name='employee_data.json' and trashed=false",
+    spaces: 'drive'
+  });
+
+  if (response.result.files.length > 0) {
+    return response.result.files[0];
+  }
+  
+  return await gapi.client.drive.files.create({
+    name: 'employee_data.json',
+    mimeType: 'application/json'
+  });
 }
