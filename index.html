@@ -1,528 +1,885 @@
 <!DOCTYPE html>
-<html lang="bn" data-bs-theme="light">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আলামিন এন্টারপ্রাইজ - কর্মচারী ব্যবস্থাপনা</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
+    <title>রিয়েল-টাইম ইংরেজি শিক্ষা - বাংলাদেশী ফ্রিল্যান্সারদের জন্য</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Nirmala UI', 'Kalpurush', sans-serif;
+        }
+        
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #fbbc05;
+            --red: #ea4335;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --bangla-text: #1a237e;
+            --teacher-bg: #e3f2fd;
+            --student-bg: #e8f5e9;
+            --assistant-bg: #fff8e1;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            color: #333;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 0;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 36px;
+            color: var(--primary);
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--bangla-text);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 18px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .free-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--bangla-text);
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #444;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(26,115,232,0.15) 0%, rgba(251,188,5,0.15) 100%);
+            padding: 0 5px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        /* Assistant Section */
+        .assistant-section {
+            padding: 40px 0 80px;
+        }
+        
+        .assistant-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .assistant-header {
+            background: var(--primary);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .assistant-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .assistant-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .conversation-container {
+            padding: 25px;
+            height: 400px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: #fafafa;
+        }
+        
+        .message {
+            max-width: 85%;
+            padding: 15px 20px;
+            border-radius: 18px;
+            position: relative;
+            animation: fadeIn 0.4s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .teacher-message {
+            align-self: flex-start;
+            background: var(--teacher-bg);
+            border-bottom-left-radius: 5px;
+            color: #0d47a1;
+        }
+        
+        .student-message {
+            align-self: flex-end;
+            background: var(--student-bg);
+            border-bottom-right-radius: 5px;
+            color: #1b5e20;
+        }
+        
+        .bangla-translation {
+            font-style: italic;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(0,0,0,0.1);
+            color: var(--bangla-text);
+        }
+        
+        .correction {
+            background: #fff8e1;
+            border-left: 4px solid var(--accent);
+            padding: 12px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+            color: #5d4037;
+        }
+        
+        .correction h4 {
+            color: var(--bangla-text);
+            margin-bottom: 8px;
+        }
+        
+        .voice-controls {
+            display: flex;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #eee;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .voice-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        
+        .voice-btn.listening {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(26, 115, 232, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); }
+        }
+        
+        .voice-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+        
+        .status-indicator {
+            font-size: 1.2rem;
+            color: var(--bangla-text);
+            min-height: 30px;
+            text-align: center;
+            padding: 10px 20px;
+            background: var(--assistant-bg);
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        
+        .browser-support {
+            text-align: center;
+            padding: 10px;
+            background: #fff8e1;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Features Section */
+        .features-section {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 60px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--bangla-text);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(26, 115, 232, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--bangla-text);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bangla-text);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 1rem;
+        }
+        
+        .free-banner {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            position: sticky;
+            top: 70px;
+            z-index: 90;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .voice-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .assistant-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <div class="d-flex justify-content-between align-items-center px-3 mb-4">
-                        <h5 class="m-0">আলামিন এন্টারপ্রাইজ</h5>
-                        <button id="themeToggle" class="btn btn-sm">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </div>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <i class="fas fa-tachometer-alt me-2"></i> ড্যাশবোর্ড
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#employeeSection">
-                                <i class="fas fa-users me-2"></i> কর্মচারী
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#attendanceSection">
-                                <i class="fas fa-clipboard-check me-2"></i> হাজিরা
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#salarySection">
-                                <i class="fas fa-money-bill-wave me-2"></i> বেতন
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="generateReport()">
-                                <i class="fas fa-file-alt me-2"></i> রিপোর্ট
-                            </a>
-                        </li>
-                        <li class="nav-item mt-auto">
-                            <a class="nav-link" href="#" onclick="logout()">
-                                <i class="fas fa-sign-out-alt me-2"></i> লগআউট
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-microphone-alt"></i>
+                <h1>রিয়েল-টাইম ইংরেজি শিক্ষা</h1>
             </div>
-
-            <!-- Main Content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">ড্যাশবোর্ড</h1>
-                    <div class="input-group w-25">
-                        <input type="text" id="searchInput" class="form-control" placeholder="কর্মচারী খুঁজুন...">
-                        <button class="btn btn-outline-secondary" type="button">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Stats Cards -->
-                <div class="row mb-4">
-                    <div class="col-md-4 mb-3">
-                        <div class="card stats-card">
-                            <div class="card-body">
-                                <h5 class="card-title">মোট কর্মচারী</h5>
-                                <p class="card-text display-6" id="totalEmployees">0</p>
-                                <i class="fas fa-users fa-2x text-primary position-absolute top-0 end-0 m-3"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card stats-card">
-                            <div class="card-body">
-                                <h5 class="card-title">আজকের উপস্থিতি</h5>
-                                <p class="card-text display-6" id="presentToday">0</p>
-                                <i class="fas fa-clipboard-check fa-2x text-success position-absolute top-0 end-0 m-3"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card stats-card">
-                            <div class="card-body">
-                                <h5 class="card-title">মোট বকেয়া</h5>
-                                <p class="card-text display-6" id="totalDueAmount">0 টাকা</p>
-                                <i class="fas fa-money-bill-wave fa-2x text-danger position-absolute top-0 end-0 m-3"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">দ্রুত কার্যক্রম</h5>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
-                                        <i class="fas fa-user-plus me-2"></i> নতুন কর্মচারী
-                                    </button>
-                                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#attendanceModal">
-                                        <i class="fas fa-clipboard-check me-2"></i> হাজিরা নিন
-                                    </button>
-                                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#salaryModal">
-                                        <i class="fas fa-money-bill-wave me-2"></i> বেতন প্রদান
-                                    </button>
-                                    <button class="btn btn-secondary" onclick="generateReport()">
-                                        <i class="fas fa-print me-2"></i> রিপোর্ট প্রিন্ট
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Employee List Section -->
-                <section id="employeeSection" class="mb-4">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">কর্মচারী তালিকা</h5>
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
-                                <i class="fas fa-plus me-1"></i> নতুন
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>আইডি</th>
-                                            <th>নাম</th>
-                                            <th>মোবাইল</th>
-                                            <th>যোগদানের তারিখ</th>
-                                            <th>দৈনিক বেতন</th>
-                                            <th>মোট হাজিরা</th>
-                                            <th>মোট অর্জিত</th>
-                                            <th>মোট পরিশোধিত</th>
-                                            <th>বকেয়া</th>
-                                            <th>অ্যাকশন</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="employeeTableBody">
-                                        <!-- Employee rows will be added here dynamically -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Attendance Section -->
-                <section id="attendanceSection" class="mb-4">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">দৈনিক হাজিরা</h5>
-                            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#attendanceModal">
-                                <i class="fas fa-clipboard-check me-1"></i> হাজিরা নিন
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>আইডি</th>
-                                            <th>নাম</th>
-                                            <th>তারিখ</th>
-                                            <th>সময়</th>
-                                            <th>স্ট্যাটাস</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="attendanceTableBody">
-                                        <!-- Attendance rows will be added here dynamically -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Salary Payment Section -->
-                <section id="salarySection" class="mb-4">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">বেতন প্রদান রেকর্ড</h5>
-                            <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#salaryModal">
-                                <i class="fas fa-money-bill-wave me-1"></i> বেতন প্রদান
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>আইডি</th>
-                                            <th>নাম</th>
-                                            <th>তারিখ</th>
-                                            <th>পরিমাণ</th>
-                                            <th>মন্তব্য</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="salaryTableBody">
-                                        <!-- Salary payment rows will be added here dynamically -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Charts Section -->
-                <section id="chartsSection" class="mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="mb-0">অ্যাটেনডেন্স এবং বেতন ট্রেন্ড</h5>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="attendanceChart" height="200"></canvas>
-                        </div>
-                    </div>
-                </section>
-            </main>
+            <ul class="nav-links">
+                <li><a href="#home">হোম</a></li>
+                <li><a href="#assistant">সহায়িকা</a></li>
+                <li><a href="#features">বৈশিষ্ট্য</a></li>
+                <li><a href="#about">সম্পর্কে</a></li>
+            </ul>
         </div>
+    </header>
+    
+    <div class="free-banner">
+        <i class="fas fa-gift"></i> সম্পূর্ণ ফ্রি! সরাসরি কণ্ঠে ইংরেজি শিখুন
     </div>
 
-    <!-- Add Employee Modal -->
-    <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addEmployeeModalLabel">নতুন কর্মচারী যোগ করুন</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="employeeForm">
-                        <div class="mb-3">
-                            <label for="employeeName" class="form-label">নাম</label>
-                            <input type="text" class="form-control" id="employeeName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="employeeMobile" class="form-label">মোবাইল</label>
-                            <input type="tel" class="form-control" id="employeeMobile" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="employeeAddress" class="form-label">ঠিকানা</label>
-                            <textarea class="form-control" id="employeeAddress" rows="2"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="employeeJoinDate" class="form-label">যোগদানের তারিখ</label>
-                            <input type="date" class="form-control" id="employeeJoinDate" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="employeeSalary" class="form-label">দৈনিক বেতন (টাকা)</label>
-                            <input type="number" class="form-control" id="employeeSalary" value="1000" required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বাতিল</button>
-                    <button type="button" class="btn btn-primary" id="saveEmployeeBtn">সংরক্ষণ করুন</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Attendance Modal -->
-    <div class="modal fade" id="attendanceModal" tabindex="-1" aria-labelledby="attendanceModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="attendanceModalLabel">দৈনিক হাজিরা</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="attendanceForm">
-                        <div class="mb-3">
-                            <label for="attendanceDate" class="form-label">তারিখ</label>
-                            <input type="date" class="form-control" id="attendanceDate" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">কর্মচারী নির্বাচন করুন</label>
-                            <div id="employeeCheckboxes" class="row row-cols-1 row-cols-md-3 g-3">
-                                <!-- Employee checkboxes will be added here dynamically -->
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বাতিল</button>
-                    <button type="button" class="btn btn-success" id="saveAttendanceBtn">হাজিরা সংরক্ষণ করুন</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Salary Payment Modal -->
-    <div class="modal fade" id="salaryModal" tabindex="-1" aria-labelledby="salaryModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="salaryModalLabel">বেতন প্রদান</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="salaryForm">
-                        <div class="mb-3">
-                            <label for="salaryEmployee" class="form-label">কর্মচারী</label>
-                            <select class="form-select" id="salaryEmployee" required>
-                                <option value="">কর্মচারী নির্বাচন করুন</option>
-                                <!-- Employee options will be added here dynamically -->
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="salaryDate" class="form-label">তারিখ</label>
-                            <input type="date" class="form-control" id="salaryDate" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="salaryAmount" class="form-label">পরিমাণ (টাকা)</label>
-                            <input type="number" class="form-control" id="salaryAmount" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="salaryNote" class="form-label">মন্তব্য</label>
-                            <textarea class="form-control" id="salaryNote" rows="2"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বাতিল</button>
-                    <button type="button" class="btn btn-primary" id="saveSalaryBtn">সংরক্ষণ করুন</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Chart.js for charts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Custom JS -->
-    <script src="login.js"></script>
-
-    <!-- Add this to the sidebar navigation -->
-    <li class="nav-item">
-        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#backupModal">
-            <i class="fas fa-database me-2"></i> ব্যাকআপ ও পুনরুদ্ধার
-        </a>
-    </li>
-
-    <!-- Add this before the closing body tag -->
-    <!-- Backup and Restore Modal -->
-    <div class="modal fade" id="backupModal" tabindex="-1" aria-labelledby="backupModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="backupModalLabel">ব্যাকআপ ও পুনরুদ্ধার</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Add this to the backup modal -->
-                <div class="modal-body">
-                    <!-- Existing content -->
-                    
-                    <!-- Add this new section for offline backup -->
-                    <div class="row mb-4">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h5 class="mb-0">অফলাইন ব্যাকআপ</h5>
-                                    <div>
-                                        <button class="btn btn-sm btn-primary me-2" id="createOfflineBackupBtn">
-                                            <i class="fas fa-download me-1"></i> ব্যাকআপ ডাউনলোড কানা করুন
-                                        </button>
-                                        <button class="btn btn-sm btn-success" id="uploadBackupBtn">
-                                            <i class="fas fa-upload me-1"></i> ব্যাকআপ আপলোড করুন
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <p class="text-muted">অফলাইন ব্যাকআপ আপনাকে আপনার ডেটা একটি ফাইল হিসাবে সংরক্ষণ করতে এবং পরে আপলোড করতে দেয়।</p>
-                                    
-                                    <div id="uploadBackupForm" class="d-none mt-3">
-                                        <div class="alert alert-info">
-                                            <i class="fas fa-info-circle me-2"></i> ব্যাকআপ ফাইল আপলোড করলে বর্তমান সমস্ত ডেটা প্রতিস্থাপিত হবে।
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="backupFileInput" class="form-label">ব্যাকআপ ফাইল নির্বাচন করুন</label>
-                                            <input class="form-control" type="file" id="backupFileInput" accept=".json">
-                                        </div>
-                                        <div class="d-flex justify-content-end">
-                                            <button type="button" class="btn btn-secondary me-2" id="cancelUploadBtn">বাতিল</button>
-                                            <button type="button" class="btn btn-success" id="confirmUploadBtn">আপলোড করুন</button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mt-3">
-                                        <h6>ডেটা এক্সপোর্ট করুন (CSV)</h6>
-                                        <div class="btn-group">
-                                            <button class="btn btn-outline-secondary btn-sm" onclick="exportDataAsCSV('employees')">
-                                                <i class="fas fa-file-csv me-1"></i> কর্মচারী তালিকা
-                                            </button>
-                                            <button class="btn btn-outline-secondary btn-sm" onclick="exportDataAsCSV('attendance')">
-                                                <i class="fas fa-file-csv me-1"></i> হাজিরা রেকর্ড
-                                            </button>
-                                            <button class="btn btn-outline-secondary btn-sm" onclick="exportDataAsCSV('salary')">
-                                                <i class="fas fa-file-csv me-1"></i> বেতন রেকর্ড
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="mb-0">মুছে ফেলা আইটেম (১৫ দিন পর্যন্ত সংরক্ষিত)</h5>
-                                </div>
-                                <div class="card-body">
-                                    <ul class="nav nav-tabs" id="deletedItemsTabs" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="deleted-employees-tab" data-bs-toggle="tab" data-bs-target="#deleted-employees" type="button" role="tab">কর্মচারী</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="deleted-attendance-tab" data-bs-toggle="tab" data-bs-target="#deleted-attendance" type="button" role="tab">হাজিরা</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="deleted-salary-tab" data-bs-toggle="tab" data-bs-target="#deleted-salary" type="button" role="tab">বেতন</button>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content pt-3" id="deletedItemsTabContent">
-                                        <div class="tab-pane fade show active" id="deleted-employees" role="tabpanel">
-                                            <div class="table-responsive">
-                                                <table class="table table-sm">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>আইডি</th>
-                                                            <th>নাম</th>
-                                                            <th>মুছে ফেলার তারিখ</th>
-                                                            <th>অবশিষ্ট দিন</th>
-                                                            <th>অ্যাকশন</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="deletedEmployeesTableBody">
-                                                        <!-- Deleted employees will be added here -->
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="deleted-attendance" role="tabpanel">
-                                            <div class="table-responsive">
-                                                <table class="table table-sm">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>আইডি</th>
-                                                            <th>কর্মচারী</th>
-                                                            <th>তারিখ</th>
-                                                            <th>মুছে ফেলার তারিখ</th>
-                                                            <th>অবশিষ্ট দিন</th>
-                                                            <th>অ্যাকশন</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="deletedAttendanceTableBody">
-                                                        <!-- Deleted attendance records will be added here -->
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="deleted-salary" role="tabpanel">
-                                            <div class="table-responsive">
-                                                <table class="table table-sm">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>আইডি</th>
-                                                            <th>কর্মচারী</th>
-                                                            <th>পরিমাণ</th>
-                                                            <th>মুছে ফেলার তারিখ</th>
-                                                            <th>অবশিষ্ট দিন</th>
-                                                            <th>অ্যাকশন</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="deletedSalaryTableBody">
-                                                        <!-- Deleted salary records will be added here -->
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Charts Section -->
-    <section id="chartsSection" class="mb-4">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">অ্যাটেনডেন্স এবং বেতন ট্রেন্ড</h5>
-            </div>
-            <div class="card-body">
-                <canvas id="attendanceChart" height="200"></canvas>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>সরাসরি কণ্ঠে ইংরেজি শিখুন</h1>
+            <p>আমাদের প্ল্যাটফর্মে আপনি <span class="highlight">সরাসরি কথা বলে</span> ইংরেজি শিখতে পারবেন। ক্লায়েন্টের সাথে যোগাযোগ, প্রপোজাল লেখা, কথোপকথন - সবকিছু বাংলায় বোঝানো হবে সহজভাবে।</p>
+            
+            <div class="browser-support">
+                <i class="fas fa-info-circle"></i> এই প্ল্যাটফর্মটি Chrome, Edge এবং Safari (14.1+)-এ সেরাভাবে কাজ করে
             </div>
         </div>
     </section>
-</main>
-</div>
+
+    <!-- Assistant Section -->
+    <section class="assistant-section" id="assistant">
+        <div class="container">
+            <div class="assistant-container">
+                <div class="assistant-header">
+                    <h2><i class="fas fa-robot"></i> ইংরেজি শিক্ষা সহায়িকা</h2>
+                    <p>মাইক্রোফোন চাপুন এবং ইংরেজিতে কথা বলুন - আমি আপনাকে শেখাবো</p>
+                </div>
+                
+                <div class="conversation-container" id="conversation">
+                    <div class="message teacher-message">
+                        হ্যালো! আমি আপনার ইংরেজি শিক্ষা সহায়ক। আপনি কী শিখতে চান?
+                        <div class="bangla-translation">Hello! I am your English learning assistant. What would you like to learn?</div>
+                    </div>
+                    
+                    <div class="message teacher-message">
+                        আপনি বলতে পারেন: "আমি ইংরেজি ব্যাকরণ শিখতে চাই", "আমাকে প্রপোজাল লেখা শিখুন", বা "কথোপকথন অনুশীলন করুন"
+                        <div class="bangla-translation">You can say: "I want to learn English grammar", "Teach me proposal writing", or "Practice conversation"</div>
+                    </div>
+                </div>
+                
+                <div class="voice-controls">
+                    <button class="voice-btn" id="voiceButton">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <div class="status-indicator" id="statusIndicator">
+                        মাইক্রোফোন চাপুন এবং কথা বলুন
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>প্ল্যাটফর্মের বৈশিষ্ট্য</h2>
+                <p>আমাদের প্ল্যাটফর্মে যা যা পাবেন</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>রিয়েল-টাইম কথোপকথন</h3>
+                    <p>সরাসরি কথা বলুন এবং রিয়েল-টাইমে প্রতিক্রিয়া পান</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-spell-check"></i>
+                    </div>
+                    <h3>ব্যাকরণ সংশোধন</h3>
+                    <p>আপনার ভুলগুলো তাৎক্ষণিকভাবে সংশোধন করা হবে</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>বাংলা অনুবাদ</h3>
+                    <p>সমস্ত কিছু বাংলায় বোঝানো হবে</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-business-time"></i>
+                    </div>
+                    <h3>ফ্রিল্যান্সার ফোকাস</h3>
+                    <p>ফ্রিল্যান্সারদের জন্য প্রয়োজনীয় ইংরেজি</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub হোস্টেড</h3>
+                    <p>কোনো সার্ভার কস্ট নেই, GitHub Pages-এ হোস্ট করুন</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>কোনো API কী প্রয়োজন নেই</h3>
+                    <p>কোনো বাহ্যিক নির্ভরতা ছাড়াই কাজ করে</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>কণ্ঠে ইংরেজি শিক্ষা</h3>
+                    <p>বাংলাদেশী ফ্রিল্যান্সারদের জন্য সম্পূর্ণ ফ্রি ইংরেজি শিক্ষা প্ল্যাটফর্ম।</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>গুরুত্বপূর্ণ লিংক</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">হোম</a></li>
+                        <li><a href="#assistant">সহায়িকা</a></li>
+                        <li><a href="#features">বৈশিষ্ট্য</a></li>
+                        <li><a href="#">ব্লগ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>কোর্সসমূহ</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">ইংরেজি ব্যাকরণ</a></li>
+                        <li><a href="#">ফ্রিল্যান্সিং ইংরেজি</a></li>
+                        <li><a href="#">প্রপোজাল রাইটিং</a></li>
+                        <li><a href="#">ক্লায়েন্ট কমিউনিকেশন</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>যোগাযোগ</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@voice-english-shikkha.com</li>
+                        <li><i class="fab fa-whatsapp"></i> +৮৮০ ১৭XX XXXXXX</li>
+                        <li><i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; ২০২৩ কণ্ঠে ইংরেজি শিক্ষা - সকল অধিকার সংরক্ষিত। একটি সম্পূর্ণ ফ্রি প্ল্যাটফর্ম।</p>
+                <p>ডিজাইন করা হয়েছে বাংলাদেশী ফ্রিল্যান্সারদের জন্য</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const voiceButton = document.getElementById('voiceButton');
+            const statusIndicator = document.getElementById('statusIndicator');
+            const conversationContainer = document.getElementById('conversation');
+            
+            // Check for browser support
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                statusIndicator.textContent = "দুঃখিত, আপনার ব্রাউজার এই বৈশিষ্ট্য সমর্থন করে না। Chrome বা Edge ব্যবহার করুন।";
+                voiceButton.disabled = true;
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+            
+            const synth = window.speechSynthesis;
+            
+            let isListening = false;
+            
+            // Function to add message to conversation
+            function addMessage(text, isTeacher = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(isTeacher ? 'teacher-message' : 'student-message');
+                
+                // Process text for corrections
+                const processedText = processTextForCorrections(text);
+                messageDiv.innerHTML = processedText;
+                
+                conversationContainer.appendChild(messageDiv);
+                conversationContainer.scrollTop = conversationContainer.scrollHeight;
+            }
+            
+            // Function to simulate text processing and corrections
+            function processTextForCorrections(text) {
+                // This is a simulation - in a real app this would come from the AI
+                const corrections = {
+                    "need money": "require payment",
+                    "design": "designing",
+                    "make": "create",
+                    "do freelancing": "work as a freelancer",
+                    "want job": "seek employment",
+                    "good in": "proficient in",
+                    "make website": "develop websites",
+                    "many experience": "extensive experience"
+                };
+                
+                let correctedText = text;
+                let correctionHtml = '';
+                
+                for (const [error, correction] of Object.entries(corrections)) {
+                    if (text.toLowerCase().includes(error)) {
+                        correctedText = text.replace(new RegExp(error, 'gi'), `<strong>${correction}</strong>`);
+                        correctionHtml = `<div class="correction">
+                            <h4>সংশোধন:</h4>
+                            <p>"${error}" এর পরিবর্তে "${correction}" ব্যবহার করুন</p>
+                        </div>`;
+                        break;
+                    }
+                }
+                
+                return correctedText + correctionHtml;
+            }
+            
+            // Function to speak text
+            function speakText(text) {
+                if (synth.speaking) {
+                    synth.cancel();
+                }
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = synth.getVoices().find(voice => voice.lang.includes('en'));
+                utterance.pitch = 1.1;
+                utterance.rate = 1;
+                utterance.volume = 1;
+                
+                synth.speak(utterance);
+            }
+            
+            // Function to simulate AI response
+            function getAIResponse(userMessage) {
+                // Simulated responses based on user input
+                const responses = {
+                    "grammar": "Great! Let's start with basic tenses. Present simple is used for habits and general truths. For example: 'I work as a designer'.",
+                    "proposal": "A good proposal includes: 1. Introduction 2. Problem statement 3. Your solution 4. Timeline and cost 5. Your qualifications.",
+                    "conversation": "Let's practice a client meeting. You can say: 'Hello, I wanted to discuss the project requirements. Could you please clarify the deadline?'",
+                    "default": "That's interesting! Tell me more about your experience as a freelancer. How long have you been working in this field?"
+                };
+                
+                if (userMessage.includes("grammar")) return responses.grammar;
+                if (userMessage.includes("proposal")) return responses.proposal;
+                if (userMessage.includes("conversation")) return responses.conversation;
+                return responses.default;
+            }
+            
+            // Function to get Bengali translation
+            function getBengaliTranslation(text) {
+                // Simulated translations
+                const translations = {
+                    "Great! Let's start with basic tenses. Present simple is used for habits and general truths. For example: 'I work as a designer'.": 
+                    "চমৎকার! চলুন বেসিক টেন্স দিয়ে শুরু করি। সাধারণ বর্তমান অভ্যাস এবং সাধারণ সত্য বোঝাতে ব্যবহৃত হয়। উদাহরণ: 'আমি একজন ডিজাইনার হিসেবে কাজ করি'।",
+                    
+                    "A good proposal includes: 1. Introduction 2. Problem statement 3. Your solution 4. Timeline and cost 5. Your qualifications.": 
+                    "একটি ভাল প্রস্তাবে অন্তর্ভুক্ত: ১. পরিচিতি ২. সমস্যার বিবৃতি ৩. আপনার সমাধান ৪. সময়সীমা ও খরচ ৫. আপনার যোগ্যতা।",
+                    
+                    "Let's practice a client meeting. You can say: 'Hello, I wanted to discuss the project requirements. Could you please clarify the deadline?'": 
+                    "চলুন একটি ক্লায়েন্ট মিটিং অনুশীলন করি। আপনি বলতে পারেন: 'হ্যালো, আমি প্রজেক্টের প্রয়োজনীয়তা নিয়ে আলোচনা করতে চাই। আপনি কি শেষ তারিখটি পরিষ্কার করতে পারেন?'",
+                    
+                    "That's interesting! Tell me more about your experience as a freelancer. How long have you been working in this field?": 
+                    "এটা আকর্ষণীয়! আপনার ফ্রিল্যান্সার হিসেবে অভিজ্ঞতা সম্পর্কে আরও বলুন। আপনি কতদিন ধরে এই ক্ষেত্রে কাজ করছেন?"
+                };
+                
+                return translations[text] || "অনুবাদ পাওয়া যায়নি";
+            }
+            
+            // Voice button click handler
+            voiceButton.addEventListener('click', function() {
+                if (isListening) {
+                    recognition.stop();
+                    voiceButton.classList.remove('listening');
+                    statusIndicator.textContent = "মাইক্রোফোন বন্ধ";
+                    isListening = false;
+                } else {
+                    try {
+                        recognition.start();
+                        voiceButton.classList.add('listening');
+                        statusIndicator.textContent = "শোনা হচ্ছে... কথা বলুন";
+                        isListening = true;
+                    } catch (error) {
+                        statusIndicator.textContent = "ত্রুটি: মাইক্রোফোন এক্সেস করতে পারছি না";
+                        console.error("SpeechRecognition error:", error);
+                    }
+                }
+            });
+            
+            // Speech recognition event handlers
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                
+                statusIndicator.textContent = "প্রক্রিয়াকরণ করা হচ্ছে...";
+                
+                // Add user message
+                addMessage(transcript, false);
+                
+                // Simulate processing delay
+                setTimeout(() => {
+                    // Get AI response
+                    const aiResponse = getAIResponse(transcript.toLowerCase());
+                    const bengaliTranslation = getBengaliTranslation(aiResponse);
+                    
+                    // Add AI response
+                    const responseDiv = document.createElement('div');
+                    responseDiv.classList.add('message', 'teacher-message');
+                    responseDiv.innerHTML = `
+                        ${aiResponse}
+                        <div class="bangla-translation">${bengaliTranslation}</div>
+                    `;
+                    conversationContainer.appendChild(responseDiv);
+                    conversationContainer.scrollTop = conversationContainer.scrollHeight;
+                    
+                    // Speak the response
+                    speakText(aiResponse);
+                    
+                    statusIndicator.textContent = "মাইক্রোফোন চাপুন এবং কথা বলুন";
+                    voiceButton.classList.remove('listening');
+                    isListening = false;
+                }, 2000);
+            };
+            
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error', event.error);
+                statusIndicator.textContent = "ত্রুটি: " + event.error;
+                voiceButton.classList.remove('listening');
+                isListening = false;
+            };
+            
+            recognition.onend = function() {
+                if (isListening) {
+                    recognition.start();
+                }
+            };
+            
+            // Initial teacher messages
+            setTimeout(() => {
+                const message = "আপনার ইংরেজি দক্ষতা উন্নত করতে আমি এখানে আছি। আপনি যে কোন বিষয়ে প্রশ্ন করতে পারেন।";
+                const translation = "I'm here to help you improve your English skills. You can ask me anything.";
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', 'teacher-message');
+                messageDiv.innerHTML = `
+                    ${message}
+                    <div class="bangla-translation">${translation}</div>
+                `;
+                conversationContainer.appendChild(messageDiv);
+                conversationContainer.scrollTop = conversationContainer.scrollHeight;
+                
+                speakText(translation);
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
