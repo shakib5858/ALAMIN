@@ -1,96 +1,72 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>বাংলায় ইংরেজি শিক্ষা - ভার্চুয়াল শিক্ষক</title>
+    <title>ইংরেজি শিখুন - ফ্রিল্যান্সারদের জন্য</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Nirmala UI', 'Kalpurush', sans-serif;
         }
         
         :root {
-            --primary: #4e54c8;
-            --secondary: #8f94fb;
-            --accent: #ff9a9e;
-            --dark: #1a1a2e;
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
             --light: #f8f9fa;
-            --teacher-bg: #e3f2fd;
-            --student-bg: #e8f5e9;
-            --bangla-text: #1a237e;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: var(--light);
             line-height: 1.6;
             min-height: 100vh;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            direction: ltr;
         }
         
         .container {
-            max-width: 1000px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 30px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
         
-        .header-content {
-            position: relative;
-            z-index: 2;
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .logo i {
-            font-size: 42px;
-            color: #ffeb3b;
-        }
-        
-        .logo h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        
-        .tagline {
+        header p {
             font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 20px;
-            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #e0e0e0;
         }
         
-        /* Main Content */
         .main-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 30px;
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
         @media (max-width: 768px) {
@@ -99,118 +75,53 @@
             }
         }
         
-        /* Teacher Section */
-        .teacher-section {
-            background: var(--teacher-bg);
+        .card {
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 25px;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .teacher-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding-bottom: 20px;
-            border-bottom: 2px dashed var(--primary);
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
         }
         
-        .teacher-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: white;
-        }
-        
-        .teacher-info h2 {
+        .card h2 {
             font-size: 1.8rem;
-            color: var(--bangla-text);
-            margin-bottom: 5px;
-        }
-        
-        .teacher-info p {
-            color: #555;
-        }
-        
-        .features-list {
-            list-style: none;
-            margin-top: 15px;
-        }
-        
-        .features-list li {
-            margin-bottom: 15px;
-            padding-left: 35px;
-            position: relative;
-            color: #333;
-        }
-        
-        .features-list li i {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 25px;
-            height: 25px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
+            margin-bottom: 20px;
+            color: #fff;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 14px;
+            gap: 10px;
         }
         
-        /* Conversation Section */
-        .conversation-section {
-            background: white;
+        .card h2 i {
+            color: var(--accent);
+        }
+        
+        .teacher-section {
+            grid-column: 1 / -1;
+        }
+        
+        .chat-container {
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 15px;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            height: 500px;
-        }
-        
-        .conversation-header {
-            background: var(--primary);
-            color: white;
             padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .conversation-header i {
-            font-size: 24px;
-            color: #ffeb3b;
-        }
-        
-        .conversation-header h2 {
-            font-size: 1.6rem;
-        }
-        
-        .conversation-messages {
-            flex: 1;
-            padding: 20px;
+            height: 400px;
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: #f9f9f9;
+            margin-bottom: 20px;
         }
         
         .message {
-            max-width: 85%;
-            padding: 15px 20px;
-            border-radius: 18px;
-            position: relative;
-            animation: fadeIn 0.4s ease-out;
+            padding: 12px 18px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease;
         }
         
         @keyframes fadeIn {
@@ -218,473 +129,471 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .teacher-message {
-            align-self: flex-start;
-            background: var(--teacher-bg);
-            border-bottom-left-radius: 5px;
-            color: var(--bangla-text);
-        }
-        
-        .student-message {
-            align-self: flex-end;
-            background: var(--student-bg);
+        .user-message {
+            background: var(--accent);
+            margin-left: auto;
             border-bottom-right-radius: 5px;
-            color: #1b5e20;
         }
         
-        .bangla-translation {
-            font-style: italic;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed rgba(0,0,0,0.1);
-            color: #d32f2f;
+        .teacher-message {
+            background: rgba(255, 255, 255, 0.15);
+            margin-right: auto;
+            border-bottom-left-radius: 5px;
         }
         
-        .correction {
-            background: #fff8e1;
-            border-left: 4px solid var(--accent);
-            padding: 12px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 15px;
-            color: #5d4037;
+        .message strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
         }
         
-        .correction h4 {
-            color: var(--bangla-text);
-            margin-bottom: 8px;
-        }
-        
-        /* Voice Controls */
-        .voice-controls {
+        .mic-controls {
             display: flex;
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #eee;
-            gap: 15px;
-            align-items: center;
             justify-content: center;
+            gap: 20px;
         }
         
-        .voice-btn {
+        .mic-btn {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 28px;
+            background: var(--warning);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 6px 15px rgba(247, 37, 133, 0.4);
         }
         
-        .voice-btn.listening {
+        .mic-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(247, 37, 133, 0.6);
+        }
+        
+        .mic-btn.active {
+            background: var(--success);
+            box-shadow: 0 0 20px rgba(76, 201, 240, 0.7);
             animation: pulse 1.5s infinite;
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(78, 84, 200, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(78, 84, 200, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(78, 84, 200, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(76, 201, 240, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0); }
         }
         
-        .voice-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-        }
-        
-        .status-indicator {
-            font-size: 1.2rem;
-            color: var(--bangla-text);
-            min-height: 30px;
-            text-align: center;
-            padding: 10px 20px;
-            background: var(--teacher-bg);
-            border-radius: 30px;
-            font-weight: 600;
-        }
-        
-        /* Examples Section */
-        .examples-section {
-            padding: 30px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--bangla-text);
-            margin-bottom: 10px;
-        }
-        
-        .examples-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .example-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-        
-        .example-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .example-card h3 {
-            color: var(--bangla-text);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .example-card h3 i {
-            color: var(--primary);
-        }
-        
-        .example-card p {
-            color: #555;
-            margin-bottom: 15px;
-        }
-        
-        .example-bangla {
-            font-style: italic;
-            color: #d32f2f;
-            border-left: 3px solid var(--accent);
-            padding-left: 15px;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
+        .mic-btn i {
+            font-size: 30px;
             color: white;
-            padding: 30px;
-            text-align: center;
         }
         
-        footer p {
-            margin-bottom: 10px;
-        }
-        
-        .social-links {
-            display: flex;
+        .vocabulary-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
-            justify-content: center;
             margin-top: 20px;
         }
         
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .vocab-item {
             background: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: background 0.3s;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: all 0.3s ease;
         }
         
-        .social-links a:hover {
+        .vocab-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .vocab-item h3 {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+        }
+        
+        .vocab-item .pronunciation {
+            color: #a0a0a0;
+            font-style: italic;
+        }
+        
+        .speak-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .lesson-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .lesson-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .lesson-content {
+            display: none;
+            padding-top: 10px;
+        }
+        
+        .lesson-item.active .lesson-content {
+            display: block;
+        }
+        
+        .progress-container {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            height: 10px;
+            margin-top: 5px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--success);
+            border-radius: 10px;
+            width: 65%;
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .tips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .tip {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(76, 201, 240, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .tip i {
+            color: var(--success);
+            font-size: 1.5rem;
+        }
+        
+        .tab-container {
+            margin-top: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
             background: var(--primary);
         }
         
-        /* Animation for teacher */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        .tab-content {
+            display: none;
         }
         
-        .teacher-avatar {
-            animation: float 3s ease-in-out infinite;
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <h1>বাংলায় ইংরেজি শিক্ষা</h1>
-                </div>
-                <p class="tagline">ভার্চুয়াল শিক্ষকের সাথে কথা বলুন, ইংরেজি শিখুন সহজ বাংলায়</p>
-            </div>
+            <h1><i class="fas fa-globe"></i> ইংরেজি শিখুন - ফ্রিল্যান্সারদের জন্য</h1>
+            <p>ক্লায়েন্টের সাথে কথোপকথন, দৈনন্দিন জীবনের ইংরেজি, ভোকাবুলারি এবং উচ্চারণ শিখুন সহজ বাংলায়</p>
         </header>
         
         <div class="main-content">
-            <div class="teacher-section">
-                <div class="teacher-header">
-                    <div class="teacher-avatar">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <div class="teacher-info">
-                        <h2>আফসানা মেম</h2>
-                        <p>ভার্চুয়াল ইংরেজি শিক্ষিকা</p>
-                    </div>
-                </div>
-                
-                <h3><i class="fas fa-star"></i> কিভাবে শিখবেন</h3>
-                <ul class="features-list">
-                    <li>
-                        <i class="fas fa-check"></i>
-                        মাইক্রোফোন বোতাম চেপে বাংলায় কথা বলুন
-                    </li>
-                    <li>
-                        <i class="fas fa-check"></i>
-                        শিক্ষক আপনার প্রশ্নের উত্তর দেবেন বাংলায়
-                    </li>
-                    <li>
-                        <i class="fas fa-check"></i>
-                        ইংরেজি শেখার সহজ কৌশল শিখুন
-                    </li>
-                    <li>
-                        <i class="fas fa-check"></i>
-                        আপনার ভুলগুলো সংশোধন করে দেবেন
-                    </li>
-                    <li>
-                        <i class="fas fa-check"></i>
-                        প্রতিদিন ১৫ মিনিট অনুশীলনে ইংরেজিতে দক্ষ হোন
-                    </li>
-                </ul>
-                
-                <div class="status-indicator" id="statusIndicator">
-                    শুরু করতে মাইক্রোফোন বোতাম চাপুন
-                </div>
-            </div>
-            
-            <div class="conversation-section">
-                <div class="conversation-header">
-                    <i class="fas fa-comments"></i>
-                    <h2>শিক্ষকের সাথে কথোপকথন</h2>
-                </div>
-                
-                <div class="conversation-messages" id="conversation">
+            <div class="card teacher-section">
+                <h2><i class="fas fa-chalkboard-teacher"></i> ভার্চুয়াল ইংরেজি শিক্ষক</h2>
+                <div class="chat-container" id="chatContainer">
                     <div class="message teacher-message">
-                        আসসালামু আলাইকুম! আমি আফসানা, আপনার ভার্চুয়াল ইংরেজি শিক্ষিকা। 
-                        <div class="bangla-translation">আপনি বাংলায় কথা বলুন, আমি আপনাকে ইংরেজি শেখাবো।</div>
+                        <strong>শিক্ষক:</strong>
+                        <span>স্বাগতম! আমি আপনার ইংরেজি শিক্ষক। আপনি মাইক্রোফোন বাটনে ক্লিক করে কথা বলতে শুরু করুন। আমি আপনার কথা বুঝে উত্তর দেব এবং আপনার ভুলগুলো সংশোধন করে দেব।</span>
                     </div>
-                    
                     <div class="message teacher-message">
-                        আপনি বলতে পারেন: "আমাকে একটি ইংরেজি অভিব্যক্তি শেখান", "ব্যাকরণ বুঝাতে সাহায্য করুন", অথবা "আমার উচ্চারণ সংশোধন করুন"
-                        <div class="bangla-translation">আমি আপনাকে ধাপে ধাপে সাহায্য করবো</div>
+                        <strong>শিক্ষক:</strong>
+                        <span>চলুন একটি সাধারণ কথোপকথন শুরু করি: "How are you today?"</span>
                     </div>
                 </div>
-                
-                <div class="voice-controls">
-                    <button class="voice-btn" id="voiceButton">
+                <div class="mic-controls">
+                    <button class="mic-btn" id="micBtn">
                         <i class="fas fa-microphone"></i>
                     </button>
                 </div>
             </div>
-        </div>
-        
-        <div class="examples-section">
-            <div class="section-title">
-                <h2><i class="fas fa-lightbulb"></i> শেখার উদাহরণ</h2>
-                <p>শিক্ষক আপনাকে এভাবে ইংরেজি শেখাবেন</p>
+            
+            <div class="card">
+                <h2><i class="fas fa-book"></i> দ্রুত শিখুন</h2>
+                <p>প্রতিদিনের কথোপকথনের জন্য গুরুত্বপূর্ণ ইংরেজি বাক্য শিখুন:</p>
+                
+                <div class="lesson-item active">
+                    <div class="lesson-title">
+                        <span>ফ্রিল্যান্সিং কথোপকথন - ১</span>
+                        <button class="btn-outline btn"><i class="fas fa-play"></i> শুরু করুন</button>
+                    </div>
+                    <div class="lesson-content">
+                        <p><span class="highlight">Can you please describe the project in more detail?</span> - আপনি কি দয়া করে প্রকল্পটি আরও বিশদভাবে বর্ণনা করতে পারেন?</p>
+                        <p><span class="highlight">What is the deadline for this task?</span> - এই কাজের জন্য শেষ সময়সীমা কখন?</p>
+                        <p><span class="highlight">I will deliver the work by tomorrow.</span> - আমি আগামীকালের মধ্যে কাজটি দিয়ে দেব।</p>
+                        
+                        <div class="progress-container">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-title">
+                        <span>দৈনন্দিন কথোপকথন</span>
+                        <button class="btn-outline btn"><i class="fas fa-lock"></i> তালাবদ্ধ</button>
+                    </div>
+                </div>
+                
+                <div class="lesson-item">
+                    <div class="lesson-title">
+                        <span>ব্যবসায়িক ইমেইল লিখন</span>
+                        <button class="btn-outline btn"><i class="fas fa-lock"></i> তালাবদ্ধ</button>
+                    </div>
+                </div>
             </div>
             
-            <div class="examples-grid">
-                <div class="example-card">
-                    <h3><i class="fas fa-question-circle"></i> প্রশ্ন করুন</h3>
-                    <p>"Good morning" বলার সঠিক সময় কখন?</p>
-                    <div class="example-bangla">
-                        শিক্ষক: সকাল ৫টা থেকে দুপুর ১২টা পর্যন্ত "Good morning" বলবেন। দুপুরের পর "Good afternoon" ব্যবহার করুন।
+            <div class="card">
+                <h2><i class="fas fa-book-open"></i> প্রয়োজনীয় ভোকাবুলারি</h2>
+                <p>ফ্রিল্যান্সিং এবং দৈনন্দিন জীবনে সবচেয়ে বেশি ব্যবহৃত শব্দ:</p>
+                
+                <div class="tab-container">
+                    <div class="tabs">
+                        <div class="tab active">ফ্রিল্যান্সিং</div>
+                        <div class="tab">দৈনন্দিন</div>
+                        <div class="tab">ব্যবসায়িক</div>
+                    </div>
+                    
+                    <div class="tab-content active">
+                        <div class="vocabulary-list">
+                            <div class="vocab-item">
+                                <h3>Deadline <button class="speak-btn"><i class="fas fa-volume-up"></i></button></h3>
+                                <div class="pronunciation">/ˈdedlaɪn/</div>
+                                <div class="meaning">শেষ সময়সীমা, কাজ জমা দেওয়ার শেষ তারিখ</div>
+                                <div class="example">"The deadline for this project is next Monday."</div>
+                            </div>
+                            <div class="vocab-item">
+                                <h3>Milestone <button class="speak-btn"><i class="fas fa-volume-up"></i></button></h3>
+                                <div class="pronunciation">/ˈmaɪlstoʊn/</div>
+                                <div class="meaning">মাইলফলক, প্রকল্পের গুরুত্বপূর্ণ পর্যায়</div>
+                                <div class="example">"We've reached the first milestone ahead of schedule."</div>
+                            </div>
+                            <div class="vocab-item">
+                                <h3>Invoice <button class="speak-btn"><i class="fas fa-volume-up"></i></button></h3>
+                                <div class="pronunciation">/ˈɪnvɔɪs/</div>
+                                <div class="meaning">চালান, বিল</div>
+                                <div class="example">"Please send the invoice by the end of the month."</div>
+                            </div>
+                            <div class="vocab-item">
+                                <h3>Feedback <button class="speak-btn"><i class="fas fa-volume-up"></i></button></h3>
+                                <div class="pronunciation">/ˈfiːdbæk/</div>
+                                <div class="meaning">প্রতিক্রিয়া, মতামত</div>
+                                <div class="example">"I appreciate your feedback on my work."</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="example-card">
-                    <h3><i class="fas fa-spell-check"></i> উচ্চারণ শিখুন</h3>
-                    <p>"Schedule" শব্দটির উচ্চারণ কী?</p>
-                    <div class="example-bangla">
-                        শিক্ষক: ব্রিটিশ ইংরেজিতে "শেডিউল" (shed-yool), আমেরিকান ইংরেজিতে "স্কেডিউল" (sked-yool)।
-                    </div>
+                <button class="btn" style="margin-top: 20px;"><i class="fas fa-plus"></i> আরও শব্দ দেখুন</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-lightbulb"></i> ইংরেজি শেখার টিপস</h2>
+            <div class="tips">
+                <div class="tip">
+                    <i class="fas fa-comments"></i>
+                    <div>প্রতিদিন কমপক্ষে ১০ মিনিট ইংরেজিতে কথা বলার চেষ্টা করুন, এমনকি যদি একাই বলেন</div>
                 </div>
-                
-                <div class="example-card">
-                    <h3><i class="fas fa-comment"></i> কথোপকথন অনুশীলন</h3>
-                    <p>কাজের সাক্ষাৎকারে নিজেকে কিভাবে পরিচয় দেবেন?</p>
-                    <div class="example-bangla">
-                        শিক্ষক: "Hello, my name is [আপনার নাম]. I have [X] years of experience in [ফিল্ড]. I'm excited about this opportunity..."
-                    </div>
+                <div class="tip">
+                    <i class="fas fa-film"></i>
+                    <div>ইংরেজি মুভি বা সিরিজ সাবটাইটেল সহ দেখুন এবং বাক্যগুলো নোট করুন</div>
+                </div>
+                <div class="tip">
+                    <i class="fas fa-book"></i>
+                    <div>প্রতিদিন নতুন ৫টি শব্দ শিখুন এবং সেগুলো ব্যবহার করার চেষ্টা করুন</div>
+                </div>
+                <div class="tip">
+                    <i class="fas fa-microphone-alt"></i>
+                    <div>নিজের কথা রেকর্ড করুন এবং উচ্চারণের ভুলগুলো শুনে সংশোধন করুন</div>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p>ভার্চুয়াল ইংরেজি শিক্ষক - বাংলায় ইংরেজি শেখার সহজ মাধ্যম</p>
-            <p>কোনো ফি নেই, সম্পূর্ণ বিনামূল্যে শিখুন</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-            </div>
+            <p>ইংরেজি শিখুন - ফ্রিল্যান্সারদের জন্য | এই ওয়েবসাইটটি গিটহাবে আপলোড করার জন্য তৈরি করা হয়েছে</p>
+            <p>© ২০২৩ - সকল অধিকার সংরক্ষিত</p>
         </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const voiceButton = document.getElementById('voiceButton');
-            const statusIndicator = document.getElementById('statusIndicator');
-            const conversationContainer = document.getElementById('conversation');
+        // Microphone button functionality
+        const micBtn = document.getElementById('micBtn');
+        const chatContainer = document.getElementById('chatContainer');
+        let isListening = false;
+        
+        micBtn.addEventListener('click', function() {
+            isListening = !isListening;
             
-            // Speech recognition and synthesis setup
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognition) {
-                statusIndicator.textContent = "দুঃখিত, আপনার ব্রাউজার এই বৈশিষ্ট্য সমর্থন করে না। Chrome বা Edge ব্যবহার করুন।";
-                voiceButton.disabled = true;
-                return;
-            }
-
-            const recognition = new SpeechRecognition();
-            recognition.continuous = false;
-            recognition.lang = 'bn-BD';
-            recognition.interimResults = false;
-            recognition.maxAlternatives = 1;
-            
-            const synth = window.speechSynthesis;
-            
-            let isListening = false;
-            
-            // Function to add message to conversation
-            function addMessage(text, isTeacher = false) {
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('message');
-                messageDiv.classList.add(isTeacher ? 'teacher-message' : 'student-message');
-                messageDiv.textContent = text;
+            if (isListening) {
+                micBtn.classList.add('active');
+                micBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
                 
-                conversationContainer.appendChild(messageDiv);
-                conversationContainer.scrollTop = conversationContainer.scrollHeight;
-            }
-            
-            // Function to speak text
-            function speakText(text) {
-                if (synth.speaking) {
-                    synth.cancel();
-                }
+                // Add user message to chat
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'user-message');
+                userMessage.innerHTML = '<strong>আপনি:</strong> আমি এখন ফ্রিল্যান্সিং সম্পর্কে ইংরেজি শিখতে চাই।';
+                chatContainer.appendChild(userMessage);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
                 
-                const utterance = new SpeechSynthesisUtterance(text);
-                
-                // Find Bengali voice
-                const voices = synth.getVoices();
-                const bengaliVoice = voices.find(voice => voice.lang.includes('bn') || voice.lang.includes('BD'));
-                
-                if (bengaliVoice) {
-                    utterance.voice = bengaliVoice;
-                } else {
-                    // Fallback to first available voice
-                    utterance.voice = voices[0];
-                }
-                
-                utterance.pitch = 1.0;
-                utterance.rate = 1.0;
-                utterance.volume = 1;
-                
-                synth.speak(utterance);
-            }
-            
-            // Function to simulate teacher response
-            function getTeacherResponse(userMessage) {
-                const responses = {
-                    "hello": "হ্যালো! আপনি আজকে কী শিখতে চান? ইংরেজি ব্যাকরণ, শব্দভান্ডার, নাকি কথোপকথন?",
-                    "help": "অবশ্যই, আমি সাহায্য করতে পারি। আপনি কোন বিষয়ে সাহায্য চান? আপনি বলতে পারেন: 'আমাকে একটি বাক্য গঠন শেখান', 'আমার উচ্চারণ চেক করুন', বা 'কথোপকথন অনুশীলন করি'",
-                    "grammar": "চলুন ব্যাকরণ শেখা শুরু করি। একটি সহজ উদাহরণ: 'I am eating' - এখানে 'am' হচ্ছে helping verb, 'eating' হচ্ছে main verb। বাংলায় আমরা বলি 'আমি খাচ্ছি'।",
-                    "vocabulary": "চলুন কিছু নতুন শব্দ শিখি: 'Delighted' মানে খুব খুশি, 'Consequently' মানে ফলস্বরূপ, 'Nevertheless' মানে তা সত্ত্বেও।",
-                    "pronunciation": "উচ্চারণ শেখার জন্য একটি টিপস: ইংরেজি শব্দের শেষের অক্ষর প্রায়ই আমরা উচ্চারণ করি না, যেমন 'knife' বলি 'নাইফ', 'walk' বলি 'ওয়াক'।",
-                    "default": "আপনি যদি ইংরেজি শিখতে চান, আমি আপনাকে সাহায্য করতে পারি। আপনি কী শিখতে চান? ব্যাকরণ, শব্দভান্ডার, নাকি কথোপকথন?"
-                };
-                
-                const lowerMsg = userMessage.toLowerCase();
-                
-                if (lowerMsg.includes("হ্যালো") || lowerMsg.includes("hello")) return responses.hello;
-                if (lowerMsg.includes("সাহায্য") || lowerMsg.includes("help")) return responses.help;
-                if (lowerMsg.includes("ব্যাকরণ") || lowerMsg.includes("grammar")) return responses.grammar;
-                if (lowerMsg.includes("শব্দ") || lowerMsg.includes("vocabulary")) return responses.vocabulary;
-                if (lowerMsg.includes("উচ্চারণ") || lowerMsg.includes("pronunciation")) return responses.pronunciation;
-                
-                return responses.default;
-            }
-            
-            // Voice button click handler
-            voiceButton.addEventListener('click', function() {
-                if (isListening) {
-                    recognition.stop();
-                    voiceButton.classList.remove('listening');
-                    statusIndicator.textContent = "মাইক্রোফোন বন্ধ";
-                    isListening = false;
-                } else {
-                    try {
-                        recognition.start();
-                        voiceButton.classList.add('listening');
-                        statusIndicator.textContent = "শোনা হচ্ছে... বাংলায় কথা বলুন";
-                        isListening = true;
-                    } catch (error) {
-                        statusIndicator.textContent = "ত্রুটি: মাইক্রোফোন এক্সেস করতে পারছি না";
-                        console.error("SpeechRecognition error:", error);
-                    }
-                }
-            });
-            
-            // Speech recognition event handlers
-            recognition.onresult = function(event) {
-                const transcript = event.results[0][0].transcript;
-                
-                statusIndicator.textContent = "প্রক্রিয়াকরণ করা হচ্ছে...";
-                
-                // Add user message
-                addMessage(transcript, false);
-                
-                // Simulate processing delay
+                // Simulate teacher response after delay
                 setTimeout(() => {
-                    // Get teacher response
-                    const teacherResponse = getTeacherResponse(transcript);
-                    
-                    // Add teacher response
-                    addMessage(teacherResponse, true);
-                    
-                    // Speak the response
-                    speakText(teacherResponse);
-                    
-                    statusIndicator.textContent = "মাইক্রোফোন চাপুন এবং কথা বলুন";
-                    voiceButton.classList.remove('listening');
-                    isListening = false;
+                    const teacherMessage = document.createElement('div');
+                    teacherMessage.classList.add('message', 'teacher-message');
+                    teacherMessage.innerHTML = '<strong>শিক্ষক:</strong> Excellent choice! Let\'s start with common freelancing phrases. Repeat after me: "Could you please clarify the requirements?"';
+                    chatContainer.appendChild(teacherMessage);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
                 }, 2000);
-            };
-            
-            recognition.onerror = function(event) {
-                console.error('Speech recognition error', event.error);
-                statusIndicator.textContent = "ত্রুটি: " + event.error;
-                voiceButton.classList.remove('listening');
-                isListening = false;
-            };
-            
-            recognition.onend = function() {
-                if (isListening) {
-                    recognition.start();
-                }
-            };
-            
-            // Initial teacher messages
-            setTimeout(() => {
-                const message = "আপনি বাংলায় যে কোন প্রশ্ন করতে পারেন। আমি আপনাকে ইংরেজি শেখাতে সাহায্য করব।";
-                addMessage(message, true);
-                speakText(message);
-            }, 3000);
+            } else {
+                micBtn.classList.remove('active');
+                micBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                
+                // Add user message to chat
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'user-message');
+                userMessage.innerHTML = '<strong>আপনি:</strong> Could you please clarify the requirements?';
+                chatContainer.appendChild(userMessage);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+                
+                // Simulate teacher response after delay
+                setTimeout(() => {
+                    const teacherMessage = document.createElement('div');
+                    teacherMessage.classList.add('message', 'teacher-message');
+                    teacherMessage.innerHTML = '<strong>শিক্ষক:</strong> Very good pronunciation! Now try this: "I need more time to complete this task."';
+                    chatContainer.appendChild(teacherMessage);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }, 2000);
+            }
+        });
+        
+        // Vocabulary speak buttons
+        document.querySelectorAll('.speak-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const vocabItem = this.closest('.vocab-item');
+                const word = vocabItem.querySelector('h3').firstChild.textContent.trim();
+                
+                // Show speaking animation
+                const icon = this.querySelector('i');
+                icon.classList.remove('fa-volume-up');
+                icon.classList.add('fa-circle-notch', 'fa-spin');
+                
+                // Simulate speech
+                setTimeout(() => {
+                    icon.classList.remove('fa-circle-notch', 'fa-spin');
+                    icon.classList.add('fa-volume-up');
+                    
+                    // Show message in chat
+                    const teacherMessage = document.createElement('div');
+                    teacherMessage.classList.add('message', 'teacher-message');
+                    teacherMessage.innerHTML = `<strong>শিক্ষক:</strong> You just practiced: <span class="highlight">${word}</span>. Good job!`;
+                    chatContainer.appendChild(teacherMessage);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }, 1500);
+            });
+        });
+        
+        // Lesson toggles
+        document.querySelectorAll('.lesson-title').forEach(title => {
+            title.addEventListener('click', function() {
+                const lessonItem = this.closest('.lesson-item');
+                lessonItem.classList.toggle('active');
+            });
+        });
+        
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+            });
         });
     </script>
 </body>
