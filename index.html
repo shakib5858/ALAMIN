@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>রিয়েল-টাইম ইংরেজি শিক্ষা - বাংলাদেশী ফ্রিল্যান্সারদের জন্য</title>
+    <title>বাংলায় ইংরেজি শিক্ষা - ভার্চুয়াল শিক্ষক</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,185 +14,195 @@
         }
         
         :root {
-            --primary: #1a73e8;
-            --secondary: #34a853;
-            --accent: #fbbc05;
-            --red: #ea4335;
-            --dark: #202124;
+            --primary: #4e54c8;
+            --secondary: #8f94fb;
+            --accent: #ff9a9e;
+            --dark: #1a1a2e;
             --light: #f8f9fa;
-            --bangla-text: #1a237e;
             --teacher-bg: #e3f2fd;
             --student-bg: #e8f5e9;
-            --assistant-bg: #fff8e1;
-            --github-purple: #6e40c9;
+            --bangla-text: #1a237e;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
         body {
-            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
-            line-height: 1.8;
+            line-height: 1.6;
             min-height: 100vh;
-            padding: 0;
-            background-attachment: fixed;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
         }
         
         /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
+        .header-content {
+            position: relative;
+            z-index: 2;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         
         .logo i {
-            font-size: 36px;
-            color: var(--github-purple);
+            font-size: 42px;
+            color: #ffeb3b;
         }
         
         .logo h1 {
-            font-size: 24px;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--bangla-text);
         }
         
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: color 0.3s;
-            position: relative;
-            font-size: 18px;
-        }
-        
-        .nav-links a:hover {
-            color: var(--github-purple);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--github-purple);
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .free-badge {
-            background: var(--secondary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 80px 0 40px;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--bangla-text);
-            line-height: 1.3;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            color: #444;
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-        
-        .highlight {
-            background: linear-gradient(120deg, rgba(110,64,201,0.15) 0%, rgba(251,188,5,0.15) 100%);
-            padding: 0 5px;
-            border-radius: 5px;
-            font-weight: 600;
-        }
-        
-        /* Assistant Section */
-        .assistant-section {
-            padding: 40px 0 80px;
-        }
-        
-        .assistant-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-            overflow: hidden;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .assistant-header {
-            background: var(--github-purple);
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-        
-        .assistant-header h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .assistant-header p {
-            font-size: 1.1rem;
+        .tagline {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 20px;
             opacity: 0.9;
         }
         
-        .conversation-container {
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Teacher Section */
+        .teacher-section {
+            background: var(--teacher-bg);
+            border-radius: 15px;
             padding: 25px;
-            height: 400px;
-            overflow-y: auto;
+            box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
             gap: 20px;
-            background: #fafafa;
+        }
+        
+        .teacher-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed var(--primary);
+        }
+        
+        .teacher-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+        
+        .teacher-info h2 {
+            font-size: 1.8rem;
+            color: var(--bangla-text);
+            margin-bottom: 5px;
+        }
+        
+        .teacher-info p {
+            color: #555;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .features-list li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+            color: #333;
+        }
+        
+        .features-list li i {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        /* Conversation Section */
+        .conversation-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+        }
+        
+        .conversation-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .conversation-header i {
+            font-size: 24px;
+            color: #ffeb3b;
+        }
+        
+        .conversation-header h2 {
+            font-size: 1.6rem;
+        }
+        
+        .conversation-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: #f9f9f9;
         }
         
         .message {
@@ -212,7 +222,7 @@
             align-self: flex-start;
             background: var(--teacher-bg);
             border-bottom-left-radius: 5px;
-            color: #0d47a1;
+            color: var(--bangla-text);
         }
         
         .student-message {
@@ -227,7 +237,7 @@
             margin-top: 10px;
             padding-top: 10px;
             border-top: 1px dashed rgba(0,0,0,0.1);
-            color: var(--bangla-text);
+            color: #d32f2f;
         }
         
         .correction {
@@ -244,6 +254,7 @@
             margin-bottom: 8px;
         }
         
+        /* Voice Controls */
         .voice-controls {
             display: flex;
             padding: 20px;
@@ -252,14 +263,13 @@
             gap: 15px;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
         }
         
         .voice-btn {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--github-purple), var(--primary));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border: none;
             cursor: pointer;
@@ -277,9 +287,9 @@
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(110,64,201,0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(110,64,201,0); }
-            100% { box-shadow: 0 0 0 0 rgba(110,64,201,0); }
+            0% { box-shadow: 0 0 0 0 rgba(78, 84, 200, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(78, 84, 200, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(78, 84, 200, 0); }
         }
         
         .voice-btn:hover {
@@ -293,178 +303,86 @@
             min-height: 30px;
             text-align: center;
             padding: 10px 20px;
-            background: var(--assistant-bg);
+            background: var(--teacher-bg);
             border-radius: 30px;
             font-weight: 600;
-            margin-top: 15px;
         }
         
-        .browser-support {
-            text-align: center;
-            padding: 15px;
-            background: #fff8e1;
-            border-radius: 10px;
-            margin-top: 20px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .troubleshooting {
-            background: #e3f2fd;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .troubleshooting h3 {
-            color: var(--bangla-text);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .troubleshooting-steps {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-        }
-        
-        .step-card {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .step-card i {
-            font-size: 24px;
-            color: var(--github-purple);
-            margin-bottom: 10px;
-        }
-        
-        /* Features Section */
-        .features-section {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 60px 0;
-            backdrop-filter: blur(10px);
+        /* Examples Section */
+        .examples-section {
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--bangla-text);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
-        .section-title p {
-            font-size: 1.1rem;
-            color: #555;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .features-grid {
+        .examples-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
         
-        .feature-card {
+        .example-card {
             background: white;
             border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 25px;
+            box-shadow: var(--shadow);
             transition: transform 0.3s;
-            text-align: center;
         }
         
-        .feature-card:hover {
+        .example-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
         }
         
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(110,64,201,0.1);
+        .example-card h3 {
+            color: var(--bangla-text);
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 30px;
-            color: var(--github-purple);
+            gap: 10px;
         }
         
-        .feature-card h3 {
-            font-size: 1.6rem;
+        .example-card h3 i {
+            color: var(--primary);
+        }
+        
+        .example-card p {
+            color: #555;
             margin-bottom: 15px;
-            color: var(--bangla-text);
+        }
+        
+        .example-bangla {
+            font-style: italic;
+            color: #d32f2f;
+            border-left: 3px solid var(--accent);
+            padding-left: 15px;
         }
         
         /* Footer */
         footer {
-            background: var(--bangla-text);
+            background: var(--dark);
             color: white;
-            padding: 60px 0 30px;
+            padding: 30px;
+            text-align: center;
         }
         
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 15px;
-        }
-        
-        .footer-links a {
-            color: #e0e0e0;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 18px;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent);
+        footer p {
+            margin-bottom: 10px;
         }
         
         .social-links {
             display: flex;
             gap: 15px;
+            justify-content: center;
             margin-top: 20px;
         }
         
@@ -481,136 +399,89 @@
         }
         
         .social-links a:hover {
-            background: var(--github-purple);
+            background: var(--primary);
         }
         
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bbb;
-            font-size: 1rem;
+        /* Animation for teacher */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
         
-        .free-banner {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            position: sticky;
-            top: 70px;
-            z-index: 90;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .voice-btn {
-                width: 80px;
-                height: 80px;
-                font-size: 24px;
-            }
-            
-            .troubleshooting-steps {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .step-card {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .assistant-header h2 {
-                font-size: 1.8rem;
-            }
+        .teacher-avatar {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <i class="fas fa-microphone-alt"></i>
-                <h1>রিয়েল-টাইম ইংরেজি শিক্ষা</h1>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h1>বাংলায় ইংরেজি শিক্ষা</h1>
+                </div>
+                <p class="tagline">ভার্চুয়াল শিক্ষকের সাথে কথা বলুন, ইংরেজি শিখুন সহজ বাংলায়</p>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">হোম</a></li>
-                <li><a href="#assistant">সহায়িকা</a></li>
-                <li><a href="#features">বৈশিষ্ট্য</a></li>
-                <li><a href="#github">GitHub</a></li>
-            </ul>
-        </div>
-    </header>
-    
-    <div class="free-banner">
-        <i class="fas fa-gift"></i> সম্পূর্ণ ফ্রি! সরাসরি কণ্ঠে ইংরেজি শিখুন
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>সরাসরি কণ্ঠে ইংরেজি শিখুন</h1>
-            <p>আমাদের প্ল্যাটফর্মে আপনি <span class="highlight">সরাসরি কথা বলে</span> ইংরেজি শিখতে পারবেন। ক্লায়েন্টের সাথে যোগাযোগ, প্রপোজাল লেখা, কথোপকথন - সবকিছু বাংলায় বোঝানো হবে সহজভাবে।</p>
-            
-            <div class="browser-support">
-                <i class="fas fa-info-circle"></i> 
-                <strong>মাইক্রোফোন সমাধান:</strong> এই প্ল্যাটফর্মটি Chrome, Edge এবং Safari (14.1+)-এ সেরাভাবে কাজ করে। GitHub Pages-এ হোস্ট করার সময় HTTPS ব্যবহার করায় মাইক্রোফোন সঠিকভাবে কাজ করবে।
-            </div>
-        </div>
-    </section>
-
-    <!-- Assistant Section -->
-    <section class="assistant-section" id="assistant">
-        <div class="container">
-            <div class="assistant-container">
-                <div class="assistant-header">
-                    <h2><i class="fas fa-robot"></i> ইংরেজি শিক্ষা সহায়িকা</h2>
-                    <p>মাইক্রোফোন চাপুন এবং ইংরেজিতে কথা বলুন - আমি আপনাকে শেখাবো</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="teacher-section">
+                <div class="teacher-header">
+                    <div class="teacher-avatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="teacher-info">
+                        <h2>আফসানা মেম</h2>
+                        <p>ভার্চুয়াল ইংরেজি শিক্ষিকা</p>
+                    </div>
                 </div>
                 
-                <div class="conversation-container" id="conversation">
+                <h3><i class="fas fa-star"></i> কিভাবে শিখবেন</h3>
+                <ul class="features-list">
+                    <li>
+                        <i class="fas fa-check"></i>
+                        মাইক্রোফোন বোতাম চেপে বাংলায় কথা বলুন
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        শিক্ষক আপনার প্রশ্নের উত্তর দেবেন বাংলায়
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        ইংরেজি শেখার সহজ কৌশল শিখুন
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        আপনার ভুলগুলো সংশোধন করে দেবেন
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        প্রতিদিন ১৫ মিনিট অনুশীলনে ইংরেজিতে দক্ষ হোন
+                    </li>
+                </ul>
+                
+                <div class="status-indicator" id="statusIndicator">
+                    শুরু করতে মাইক্রোফোন বোতাম চাপুন
+                </div>
+            </div>
+            
+            <div class="conversation-section">
+                <div class="conversation-header">
+                    <i class="fas fa-comments"></i>
+                    <h2>শিক্ষকের সাথে কথোপকথন</h2>
+                </div>
+                
+                <div class="conversation-messages" id="conversation">
                     <div class="message teacher-message">
-                        হ্যালো! আমি আপনার ইংরেজি শিক্ষা সহায়ক। আপনি কী শিখতে চান?
-                        <div class="bangla-translation">Hello! I am your English learning assistant. What would you like to learn?</div>
+                        আসসালামু আলাইকুম! আমি আফসানা, আপনার ভার্চুয়াল ইংরেজি শিক্ষিকা। 
+                        <div class="bangla-translation">আপনি বাংলায় কথা বলুন, আমি আপনাকে ইংরেজি শেখাবো।</div>
                     </div>
                     
                     <div class="message teacher-message">
-                        আপনি বলতে পারেন: "আমি ইংরেজি ব্যাকরণ শিখতে চাই", "আমাকে প্রপোজাল লেখা শিখুন", বা "কথোপকথন অনুশীলন করুন"
-                        <div class="bangla-translation">You can say: "I want to learn English grammar", "Teach me proposal writing", or "Practice conversation"</div>
-                    </div>
-                    
-                    <div class="message teacher-message">
-                        <div class="correction">
-                            <h4>মাইক্রোফোন সমস্যা সমাধান:</h4>
-                            <p>যদি মাইক্রোফোন কাজ না করে, অনুগ্রহ করে নিচের ট্রাবলশুটিং গাইড দেখুন। GitHub Pages-এ HTTPS ব্যবহার করায় মাইক্রোফোন সঠিকভাবে কাজ করবে।</p>
-                        </div>
+                        আপনি বলতে পারেন: "আমাকে একটি ইংরেজি অভিব্যক্তি শেখান", "ব্যাকরণ বুঝাতে সাহায্য করুন", অথবা "আমার উচ্চারণ সংশোধন করুন"
+                        <div class="bangla-translation">আমি আপনাকে ধাপে ধাপে সাহায্য করবো</div>
                     </div>
                 </div>
                 
@@ -618,150 +489,53 @@
                     <button class="voice-btn" id="voiceButton">
                         <i class="fas fa-microphone"></i>
                     </button>
-                    <div class="status-indicator" id="statusIndicator">
-                        মাইক্রোফোন চাপুন এবং কথা বলুন
-                    </div>
-                </div>
-            </div>
-            
-            <div class="troubleshooting">
-                <h3><i class="fas fa-tools"></i> মাইক্রোফোন সমস্যা সমাধান</h3>
-                <div class="troubleshooting-steps">
-                    <div class="step-card">
-                        <i class="fas fa-lock"></i>
-                        <h4>HTTPS ব্যবহার করুন</h4>
-                        <p>GitHub Pages স্বয়ংক্রিয়ভাবে HTTPS প্রদান করে, যা মাইক্রোফোনের জন্য প্রয়োজনীয়</p>
-                    </div>
-                    <div class="step-card">
-                        <i class="fab fa-chrome"></i>
-                        <h4>Chrome ব্যবহার করুন</h4>
-                        <p>Chrome ব্রাউজারে Web Speech API সবচেয়ে ভাল কাজ করে</p>
-                    </div>
-                    <div class="step-card">
-                        <i class="fas fa-microphone-slash"></i>
-                        <h4>মাইক্রোফোন অনুমতি দিন</h4>
-                        <p>ব্রাউজার অনুরোধ করলে মাইক্রোফোন এক্সেসের অনুমতি দিন</p>
-                    </div>
-                    <div class="step-card">
-                        <i class="fas fa-plug"></i>
-                        <h4>হেডফোন ব্যবহার করুন</h4>
-                        <p>কণ্ঠস্বর স্পষ্টভাবে শোনার জন্য হেডফোন ব্যবহার করুন</p>
-                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features-section" id="features">
-        <div class="container">
+        
+        <div class="examples-section">
             <div class="section-title">
-                <h2>প্ল্যাটফর্মের বৈশিষ্ট্য</h2>
-                <p>আমাদের প্ল্যাটফর্মে যা যা পাবেন</p>
+                <h2><i class="fas fa-lightbulb"></i> শেখার উদাহরণ</h2>
+                <p>শিক্ষক আপনাকে এভাবে ইংরেজি শেখাবেন</p>
             </div>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3><i class="fas fa-question-circle"></i> প্রশ্ন করুন</h3>
+                    <p>"Good morning" বলার সঠিক সময় কখন?</p>
+                    <div class="example-bangla">
+                        শিক্ষক: সকাল ৫টা থেকে দুপুর ১২টা পর্যন্ত "Good morning" বলবেন। দুপুরের পর "Good afternoon" ব্যবহার করুন।
                     </div>
-                    <h3>রিয়েল-টাইম কথোপকথন</h3>
-                    <p>সরাসরি কথা বলুন এবং রিয়েল-টাইমে প্রতিক্রিয়া পান</p>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-spell-check"></i>
+                <div class="example-card">
+                    <h3><i class="fas fa-spell-check"></i> উচ্চারণ শিখুন</h3>
+                    <p>"Schedule" শব্দটির উচ্চারণ কী?</p>
+                    <div class="example-bangla">
+                        শিক্ষক: ব্রিটিশ ইংরেজিতে "শেডিউল" (shed-yool), আমেরিকান ইংরেজিতে "স্কেডিউল" (sked-yool)।
                     </div>
-                    <h3>ব্যাকরণ সংশোধন</h3>
-                    <p>আপনার ভুলগুলো তাৎক্ষণিকভাবে সংশোধন করা হবে</p>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-language"></i>
+                <div class="example-card">
+                    <h3><i class="fas fa-comment"></i> কথোপকথন অনুশীলন</h3>
+                    <p>কাজের সাক্ষাৎকারে নিজেকে কিভাবে পরিচয় দেবেন?</p>
+                    <div class="example-bangla">
+                        শিক্ষক: "Hello, my name is [আপনার নাম]. I have [X] years of experience in [ফিল্ড]. I'm excited about this opportunity..."
                     </div>
-                    <h3>বাংলা অনুবাদ</h3>
-                    <p>সমস্ত কিছু বাংলায় বোঝানো হবে</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-business-time"></i>
-                    </div>
-                    <h3>ফ্রিল্যান্সার ফোকাস</h3>
-                    <p>ফ্রিল্যান্সারদের জন্য প্রয়োজনীয় ইংরেজি</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h3>GitHub হোস্টেড</h3>
-                    <p>কোনো সার্ভার কস্ট নেই, GitHub Pages-এ হোস্ট করুন</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-microphone"></i>
-                    </div>
-                    <h3>মাইক্রোফোন ফিক্সড</h3>
-                    <p>মাইক্রোফোন সমস্যা সমাধান করা হয়েছে</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>কণ্ঠে ইংরেজি শিক্ষা</h3>
-                    <p>বাংলাদেশী ফ্রিল্যান্সারদের জন্য সম্পূর্ণ ফ্রি ইংরেজি শিক্ষা প্ল্যাটফর্ম।</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>গুরুত্বপূর্ণ লিংক</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">হোম</a></li>
-                        <li><a href="#assistant">সহায়িকা</a></li>
-                        <li><a href="#features">বৈশিষ্ট্য</a></li>
-                        <li><a href="#github">GitHub</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>কোর্সসমূহ</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">ইংরেজি ব্যাকরণ</a></li>
-                        <li><a href="#">ফ্রিল্যান্সিং ইংরেজি</a></li>
-                        <li><a href="#">প্রপোজাল রাইটিং</a></li>
-                        <li><a href="#">ক্লায়েন্ট কমিউনিকেশন</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>যোগাযোগ</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> info@voice-english-shikkha.com</li>
-                        <li><i class="fab fa-whatsapp"></i> +৮৮০ ১৭XX XXXXXX</li>
-                        <li><i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ</li>
-                    </ul>
-                </div>
+        
+        <footer>
+            <p>ভার্চুয়াল ইংরেজি শিক্ষক - বাংলায় ইংরেজি শেখার সহজ মাধ্যম</p>
+            <p>কোনো ফি নেই, সম্পূর্ণ বিনামূল্যে শিখুন</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; ২০২৩ কণ্ঠে ইংরেজি শিক্ষা - সকল অধিকার সংরক্ষিত। একটি সম্পূর্ণ ফ্রি প্ল্যাটফর্ম।</p>
-                <p>ডিজাইন করা হয়েছে বাংলাদেশী ফ্রিল্যান্সারদের জন্য - মাইক্রোফোন সমস্যা সমাধান করা হয়েছে</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -769,27 +543,17 @@
             const statusIndicator = document.getElementById('statusIndicator');
             const conversationContainer = document.getElementById('conversation');
             
-            // Check for browser support
+            // Speech recognition and synthesis setup
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SpeechRecognition) {
                 statusIndicator.textContent = "দুঃখিত, আপনার ব্রাউজার এই বৈশিষ্ট্য সমর্থন করে না। Chrome বা Edge ব্যবহার করুন।";
                 voiceButton.disabled = true;
-                
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('message', 'teacher-message');
-                messageDiv.innerHTML = `
-                    <div class="correction">
-                        <h4>ব্রাউজার সমর্থন:</h4>
-                        <p>আপনার ব্রাউজার Web Speech API সমর্থন করে না। অনুগ্রহ করে Chrome বা Edge ব্রাউজার ব্যবহার করুন।</p>
-                    </div>
-                `;
-                conversationContainer.appendChild(messageDiv);
                 return;
             }
 
             const recognition = new SpeechRecognition();
             recognition.continuous = false;
-            recognition.lang = 'en-US';
+            recognition.lang = 'bn-BD';
             recognition.interimResults = false;
             recognition.maxAlternatives = 1;
             
@@ -802,44 +566,10 @@
                 const messageDiv = document.createElement('div');
                 messageDiv.classList.add('message');
                 messageDiv.classList.add(isTeacher ? 'teacher-message' : 'student-message');
-                
-                // Process text for corrections
-                const processedText = processTextForCorrections(text);
-                messageDiv.innerHTML = processedText;
+                messageDiv.textContent = text;
                 
                 conversationContainer.appendChild(messageDiv);
                 conversationContainer.scrollTop = conversationContainer.scrollHeight;
-            }
-            
-            // Function to simulate text processing and corrections
-            function processTextForCorrections(text) {
-                // This is a simulation - in a real app this would come from the AI
-                const corrections = {
-                    "need money": "require payment",
-                    "design": "designing",
-                    "make": "create",
-                    "do freelancing": "work as a freelancer",
-                    "want job": "seek employment",
-                    "good in": "proficient in",
-                    "make website": "develop websites",
-                    "many experience": "extensive experience"
-                };
-                
-                let correctedText = text;
-                let correctionHtml = '';
-                
-                for (const [error, correction] of Object.entries(corrections)) {
-                    if (text.toLowerCase().includes(error)) {
-                        correctedText = text.replace(new RegExp(error, 'gi'), `<strong>${correction}</strong>`);
-                        correctionHtml = `<div class="correction">
-                            <h4>সংশোধন:</h4>
-                            <p>"${error}" এর পরিবর্তে "${correction}" ব্যবহার করুন</p>
-                        </div>`;
-                        break;
-                    }
-                }
-                
-                return correctedText + correctionHtml;
             }
             
             // Function to speak text
@@ -850,57 +580,44 @@
                 
                 const utterance = new SpeechSynthesisUtterance(text);
                 
-                // Find the best voice for English
+                // Find Bengali voice
                 const voices = synth.getVoices();
-                const englishVoice = voices.find(voice => 
-                    voice.lang.includes('en') && voice.name.includes('Google')
-                );
+                const bengaliVoice = voices.find(voice => voice.lang.includes('bn') || voice.lang.includes('BD'));
                 
-                if (englishVoice) {
-                    utterance.voice = englishVoice;
+                if (bengaliVoice) {
+                    utterance.voice = bengaliVoice;
+                } else {
+                    // Fallback to first available voice
+                    utterance.voice = voices[0];
                 }
                 
-                utterance.pitch = 1.1;
-                utterance.rate = 1;
+                utterance.pitch = 1.0;
+                utterance.rate = 1.0;
                 utterance.volume = 1;
                 
                 synth.speak(utterance);
             }
             
-            // Function to simulate AI response
-            function getAIResponse(userMessage) {
-                // Simulated responses based on user input
+            // Function to simulate teacher response
+            function getTeacherResponse(userMessage) {
                 const responses = {
-                    "grammar": "Great! Let's start with basic tenses. Present simple is used for habits and general truths. For example: 'I work as a designer'.",
-                    "proposal": "A good proposal includes: 1. Introduction 2. Problem statement 3. Your solution 4. Timeline and cost 5. Your qualifications.",
-                    "conversation": "Let's practice a client meeting. You can say: 'Hello, I wanted to discuss the project requirements. Could you please clarify the deadline?'",
-                    "default": "That's interesting! Tell me more about your experience as a freelancer. How long have you been working in this field?"
+                    "hello": "হ্যালো! আপনি আজকে কী শিখতে চান? ইংরেজি ব্যাকরণ, শব্দভান্ডার, নাকি কথোপকথন?",
+                    "help": "অবশ্যই, আমি সাহায্য করতে পারি। আপনি কোন বিষয়ে সাহায্য চান? আপনি বলতে পারেন: 'আমাকে একটি বাক্য গঠন শেখান', 'আমার উচ্চারণ চেক করুন', বা 'কথোপকথন অনুশীলন করি'",
+                    "grammar": "চলুন ব্যাকরণ শেখা শুরু করি। একটি সহজ উদাহরণ: 'I am eating' - এখানে 'am' হচ্ছে helping verb, 'eating' হচ্ছে main verb। বাংলায় আমরা বলি 'আমি খাচ্ছি'।",
+                    "vocabulary": "চলুন কিছু নতুন শব্দ শিখি: 'Delighted' মানে খুব খুশি, 'Consequently' মানে ফলস্বরূপ, 'Nevertheless' মানে তা সত্ত্বেও।",
+                    "pronunciation": "উচ্চারণ শেখার জন্য একটি টিপস: ইংরেজি শব্দের শেষের অক্ষর প্রায়ই আমরা উচ্চারণ করি না, যেমন 'knife' বলি 'নাইফ', 'walk' বলি 'ওয়াক'।",
+                    "default": "আপনি যদি ইংরেজি শিখতে চান, আমি আপনাকে সাহায্য করতে পারি। আপনি কী শিখতে চান? ব্যাকরণ, শব্দভান্ডার, নাকি কথোপকথন?"
                 };
                 
-                if (userMessage.includes("grammar")) return responses.grammar;
-                if (userMessage.includes("proposal")) return responses.proposal;
-                if (userMessage.includes("conversation")) return responses.conversation;
+                const lowerMsg = userMessage.toLowerCase();
+                
+                if (lowerMsg.includes("হ্যালো") || lowerMsg.includes("hello")) return responses.hello;
+                if (lowerMsg.includes("সাহায্য") || lowerMsg.includes("help")) return responses.help;
+                if (lowerMsg.includes("ব্যাকরণ") || lowerMsg.includes("grammar")) return responses.grammar;
+                if (lowerMsg.includes("শব্দ") || lowerMsg.includes("vocabulary")) return responses.vocabulary;
+                if (lowerMsg.includes("উচ্চারণ") || lowerMsg.includes("pronunciation")) return responses.pronunciation;
+                
                 return responses.default;
-            }
-            
-            // Function to get Bengali translation
-            function getBengaliTranslation(text) {
-                // Simulated translations
-                const translations = {
-                    "Great! Let's start with basic tenses. Present simple is used for habits and general truths. For example: 'I work as a designer'.": 
-                    "চমৎকার! চলুন বেসিক টেন্স দিয়ে শুরু করি। সাধারণ বর্তমান অভ্যাস এবং সাধারণ সত্য বোঝাতে ব্যবহৃত হয়। উদাহরণ: 'আমি একজন ডিজাইনার হিসেবে কাজ করি'।",
-                    
-                    "A good proposal includes: 1. Introduction 2. Problem statement 3. Your solution 4. Timeline and cost 5. Your qualifications.": 
-                    "একটি ভাল প্রস্তাবে অন্তর্ভুক্ত: ১. পরিচিতি ২. সমস্যার বিবৃতি ৩. আপনার সমাধান ৪. সময়সীমা ও খরচ ৫. আপনার যোগ্যতা।",
-                    
-                    "Let's practice a client meeting. You can say: 'Hello, I wanted to discuss the project requirements. Could you please clarify the deadline?'": 
-                    "চলুন একটি ক্লায়েন্ট মিটিং অনুশীলন করি। আপনি বলতে পারেন: 'হ্যালো, আমি প্রজেক্টের প্রয়োজনীয়তা নিয়ে আলোচনা করতে চাই। আপনি কি শেষ তারিখটি পরিষ্কার করতে পারেন?'",
-                    
-                    "That's interesting! Tell me more about your experience as a freelancer. How long have you been working in this field?": 
-                    "এটা আকর্ষণীয়! আপনার ফ্রিল্যান্সার হিসেবে অভিজ্ঞতা সম্পর্কে আরও বলুন। আপনি কতদিন ধরে এই ক্ষেত্রে কাজ করছেন?"
-                };
-                
-                return translations[text] || "অনুবাদ পাওয়া যায়নি";
             }
             
             // Voice button click handler
@@ -914,22 +631,11 @@
                     try {
                         recognition.start();
                         voiceButton.classList.add('listening');
-                        statusIndicator.textContent = "শোনা হচ্ছে... কথা বলুন";
+                        statusIndicator.textContent = "শোনা হচ্ছে... বাংলায় কথা বলুন";
                         isListening = true;
                     } catch (error) {
                         statusIndicator.textContent = "ত্রুটি: মাইক্রোফোন এক্সেস করতে পারছি না";
                         console.error("SpeechRecognition error:", error);
-                        
-                        const messageDiv = document.createElement('div');
-                        messageDiv.classList.add('message', 'teacher-message');
-                        messageDiv.innerHTML = `
-                            <div class="correction">
-                                <h4>মাইক্রোফোন ত্রুটি:</h4>
-                                <p>মাইক্রোফোন এক্সেস করতে সমস্যা হচ্ছে। অনুগ্রহ করে নিশ্চিত করুন যে আপনি HTTPS ব্যবহার করছেন এবং মাইক্রোফোনের জন্য অনুমতি দিয়েছেন।</p>
-                            </div>
-                        `;
-                        conversationContainer.appendChild(messageDiv);
-                        conversationContainer.scrollTop = conversationContainer.scrollHeight;
                     }
                 }
             });
@@ -945,22 +651,14 @@
                 
                 // Simulate processing delay
                 setTimeout(() => {
-                    // Get AI response
-                    const aiResponse = getAIResponse(transcript.toLowerCase());
-                    const bengaliTranslation = getBengaliTranslation(aiResponse);
+                    // Get teacher response
+                    const teacherResponse = getTeacherResponse(transcript);
                     
-                    // Add AI response
-                    const responseDiv = document.createElement('div');
-                    responseDiv.classList.add('message', 'teacher-message');
-                    responseDiv.innerHTML = `
-                        ${aiResponse}
-                        <div class="bangla-translation">${bengaliTranslation}</div>
-                    `;
-                    conversationContainer.appendChild(responseDiv);
-                    conversationContainer.scrollTop = conversationContainer.scrollHeight;
+                    // Add teacher response
+                    addMessage(teacherResponse, true);
                     
                     // Speak the response
-                    speakText(aiResponse);
+                    speakText(teacherResponse);
                     
                     statusIndicator.textContent = "মাইক্রোফোন চাপুন এবং কথা বলুন";
                     voiceButton.classList.remove('listening');
@@ -973,17 +671,6 @@
                 statusIndicator.textContent = "ত্রুটি: " + event.error;
                 voiceButton.classList.remove('listening');
                 isListening = false;
-                
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('message', 'teacher-message');
-                messageDiv.innerHTML = `
-                    <div class="correction">
-                        <h4>শনাক্তকরণ ত্রুটি:</h4>
-                        <p>${event.error} - অনুগ্রহ করে আবার চেষ্টা করুন বা অন্য ব্রাউজার ব্যবহার করুন।</p>
-                    </div>
-                `;
-                conversationContainer.appendChild(messageDiv);
-                conversationContainer.scrollTop = conversationContainer.scrollHeight;
             };
             
             recognition.onend = function() {
@@ -994,22 +681,11 @@
             
             // Initial teacher messages
             setTimeout(() => {
-                const message = "আপনার ইংরেজি দক্ষতা উন্নত করতে আমি এখানে আছি। আপনি যে কোন বিষয়ে প্রশ্ন করতে পারেন।";
-                const translation = "I'm here to help you improve your English skills. You can ask me anything.";
-                
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('message', 'teacher-message');
-                messageDiv.innerHTML = `
-                    ${message}
-                    <div class="bangla-translation">${translation}</div>
-                `;
-                conversationContainer.appendChild(messageDiv);
-                conversationContainer.scrollTop = conversationContainer.scrollHeight;
-                
-                speakText(translation);
-            }, 5000);
+                const message = "আপনি বাংলায় যে কোন প্রশ্ন করতে পারেন। আমি আপনাকে ইংরেজি শেখাতে সাহায্য করব।";
+                addMessage(message, true);
+                speakText(message);
+            }, 3000);
         });
     </script>
 </body>
 </html>
-
