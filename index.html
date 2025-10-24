@@ -1,600 +1,450 @@
-        <!DOCTYPE html>
-<html lang="bn">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ইংরেজি শিখুন - ফ্রিল্যান্সারদের জন্য</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="FSPTEAM - Expert USA Ad Campaign & Pixel Setup services. Boost your ROI with professional Facebook, Google, and Instagram advertising campaigns.">
+    <meta name="keywords" content="ad campaign, pixel setup, facebook ads, google ads, instagram ads, digital marketing, USA advertising">
+    <meta name="author" content="FSPTEAM">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="FSPTEAM - USA Ad Campaign & Pixel Setup Experts">
+    <meta property="og:description" content="Professional digital marketing agency specializing in ad campaigns and pixel tracking setup for maximum ROI.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fspteam.com">
+    <meta property="og:image" content="https://fspteam.com/assets/images/og-image.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FSPTEAM - USA Ad Campaign & Pixel Setup Experts">
+    <meta name="twitter:description" content="Professional digital marketing agency specializing in ad campaigns and pixel tracking setup for maximum ROI.">
+    
+    <title>FSPTEAM - USA Ad Campaign & Pixel Setup Experts | Digital Marketing Agency</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --warning: #f72585;
-        }
-        
-        body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: var(--light);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-            direction: ltr;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            padding: 20px 0;
-            margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-        
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: #e0e0e0;
-        }
-        
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-        }
-        
-        .card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .card h2 i {
-            color: var(--accent);
-        }
-        
-        .teacher-section {
-            grid-column: 1 / -1;
-        }
-        
-        .chat-container {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 20px;
-            height: 400px;
-            overflow-y: auto;
-            margin-bottom: 20px;
-        }
-        
-        .message {
-            padding: 12px 18px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-            max-width: 80%;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .user-message {
-            background: var(--accent);
-            margin-left: auto;
-            border-bottom-right-radius: 5px;
-        }
-        
-        .teacher-message {
-            background: rgba(255, 255, 255, 0.15);
-            margin-right: auto;
-            border-bottom-left-radius: 5px;
-        }
-        
-        .message strong {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
-        
-        .mic-controls {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .mic-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--warning);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            box-shadow: 0 6px 15px rgba(247, 37, 133, 0.4);
-        }
-        
-        .mic-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(247, 37, 133, 0.6);
-        }
-        
-        .mic-btn.active {
-            background: var(--success);
-            box-shadow: 0 0 20px rgba(76, 201, 240, 0.7);
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(76, 201, 240, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0); }
-        }
-        
-        .mic-btn i {
-            font-size: 30px;
-            color: white;
-        }
-        
-        .vocabulary-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .vocab-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .vocab-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-        
-        .vocab-item h3 {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.3rem;
-        }
-        
-        .vocab-item .pronunciation {
-            color: #a0a0a0;
-            font-style: italic;
-        }
-        
-        .speak-btn {
-            background: transparent;
-            border: none;
-            color: var(--accent);
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-        
-        .lesson-item {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .lesson-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .lesson-content {
-            display: none;
-            padding-top: 10px;
-        }
-        
-        .lesson-item.active .lesson-content {
-            display: block;
-        }
-        
-        .progress-container {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            height: 10px;
-            margin-top: 5px;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: var(--success);
-            border-radius: 10px;
-            width: 65%;
-        }
-        
-        .btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .btn:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: rgba(67, 97, 238, 0.1);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            font-size: 0.9rem;
-            color: #a0a0a0;
-        }
-        
-        .highlight {
-            color: var(--accent);
-            font-weight: bold;
-        }
-        
-        .tips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .tip {
-            flex: 1;
-            min-width: 200px;
-            background: rgba(76, 201, 240, 0.15);
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .tip i {
-            color: var(--success);
-            font-size: 1.5rem;
-        }
-        
-        .tab-container {
-            margin-top: 20px;
-        }
-        
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .tab {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .tab.active {
-            background: var(--primary);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-    </style>
+    
+    <!-- 
+    TRACKING PIXELS INTEGRATION POINT
+    Add your Facebook Pixel, Google Analytics, and Google Tag Manager codes here
+    See main.js file for detailed integration instructions
+    -->
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1><i class="fas fa-globe"></i> ইংরেজি শিখুন - ফ্রিল্যান্সারদের জন্য</h1>
-            <p>ক্লায়েন্টের সাথে কথোপকথন, দৈনন্দিন জীবনের ইংরেজি, ভোকাবুলারি এবং উচ্চারণ শিখুন সহজ বাংলায়</p>
-        </header>
-        
-        <div class="main-content">
-            <div class="card teacher-section">
-                <h2><i class="fas fa-chalkboard-teacher"></i> ভার্চুয়াল ইংরেজি শিক্ষক</h2>
-                <div class="chat-container" id="chatContainer">
-                    <div class="message teacher-message">
-                        <strong>শিক্ষক:</strong>
-                        <span>স্বাগতম! আমি আপনার ইংরেজি শিক্ষক। আপনি মাইক্রোফোন বাটনে ক্লিক করে কথা বলতে শুরু করুন। আমি আপনার কথা বুঝে উত্তর দেব এবং আপনার ভুলগুলো সংশোধন করে দেব।</span>
-                    </div>
-                    <div class="message teacher-message">
-                        <strong>শিক্ষক:</strong>
-                        <span>চলুন একটি সাধারণ কথোপকথন শুরু করি: "How are you today?"</span>
-                    </div>
-                </div>
-                <div class="mic-controls">
-                    <button class="mic-btn" id="micBtn">
-                        <i class="fas fa-microphone"></i>
-                    </button>
-                </div>
-            </div>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo" aria-label="FSPTEAM Home">FSPTEAM</a>
             
-            <div class="card">
-                <h2><i class="fas fa-book"></i> দ্রুত শিখুন</h2>
-                <p>প্রতিদিনের কথোপকথনের জন্য গুরুত্বপূর্ণ ইংরেজি বাক্য শিখুন:</p>
-                
-                <div class="lesson-item active">
-                    <div class="lesson-title">
-                        <span>ফ্রিল্যান্সিং কথোপকথন - ১</span>
-                        <button class="btn-outline btn"><i class="fas fa-play"></i> শুরু করুন</button>
-                    </div>
-                    <div class="lesson-content">
-                        <p><span class="highlight">Can you please describe the project in more detail?</span> - আপনি কি দয়া করে প্রকল্পটি আরও বিশদভাবে বর্ণনা করতে পারেন?</p>
-                        <p><span class="highlight">What is the deadline for this task?</span> - এই কাজের জন্য শেষ সময়সীমা কখন?</p>
-                        <p><span class="highlight">I will deliver the work by tomorrow.</span> - আমি আগামীকালের মধ্যে কাজটি দিয়ে দেব।</p>
-                        
-                        <div class="progress-container">
-                            <div class="progress-bar"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="lesson-item">
-                    <div class="lesson-title">
-                        <span>দৈনন্দিন কথোপকথন</span>
-                        <button class="btn-outline btn"><i class="fas fa-lock"></i> তালাবদ্ধ</button>
-                    </div>
-                </div>
-                
-                <div class="lesson-item">
-                    <div class="lesson-title">
-                        <span>ব্যবসায়িক ইমেইল লিখন</span>
-                        <button class="btn-outline btn"><i class="fas fa-lock"></i> তালাবদ্ধ</button>
-                    </div>
-                </div>
-            </div>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="index.html" class="active" role="menuitem">Home</a></li>
+                <li role="none"><a href="about.html" role="menuitem">About</a></li>
+                <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+            </ul>
             
-            <div class="card">
-                <h2><i class="fas fa-book-open"></i> প্রয়োজনীয় ভোকাবুলারি</h2>
-                <p>ফ্রিল্যান্সিং এবং দৈনন্দিন জীবনে সবচেয়ে বেশি ব্যবহৃত শব্দ:</p>
-                
-                <div class="tab-container">
-                    <div class="tabs">
-                        <div class="tab active">ফ্রিল্যান্সিং</div>
-                        <div class="tab">দৈনন্দিন</div>
-                        <div class="tab">ব্যবসায়িক</div>
-                    </div>
-                    
-                    <div class="tab-content active">
-                        <div class="vocabulary-list">
-                            <div class="vocab-item">
-                                <h3>Deadline <button class="speak-btn"><i class="fas fa-volume-up"></i></button></h3>
-                                <div class="pronunciation">/ˈdedlaɪn/</div>
-                                <div class="meaning">শেষ সময়সীমা, কাজ জমা দেওয়ার শেষ তারিখ</div>
-                                <div class="example">"The deadline for this project is next Monday."</div>
-                            </div>
-                            <div class="vocab-item">
-                                <h3>Milestone <button class="speak-btn"><i class="fas fa-volume-up"></i></button></h3>
-                                <div class="pronunciation">/ˈmaɪlstoʊn/</div>
-                                <div class="meaning">মাইলফলক, প্রকল্পের গুরুত্বপূর্ণ পর্যায়</div>
-                                <div class="example">"We've reached the first milestone ahead of schedule."</div>
-                            </div>
-                            <div class="vocab-item">
-                                <h3>Invoice <button class="speak-btn"><i class="fas fa-volume-up"></i></button></h3>
-                                <div class="pronunciation">/ˈɪnvɔɪs/</div>
-                                <div class="meaning">চালান, বিল</div>
-                                <div class="example">"Please send the invoice by the end of the month."</div>
-                            </div>
-                            <div class="vocab-item">
-                                <h3>Feedback <button class="speak-btn"><i class="fas fa-volume-up"></i></button></h3>
-                                <div class="pronunciation">/ˈfiːdbæk/</div>
-                                <div class="meaning">প্রতিক্রিয়া, মতামত</div>
-                                <div class="example">"I appreciate your feedback on my work."</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="btn" style="margin-top: 20px;"><i class="fas fa-plus"></i> আরও শব্দ দেখুন</button>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2><i class="fas fa-lightbulb"></i> ইংরেজি শেখার টিপস</h2>
-            <div class="tips">
-                <div class="tip">
-                    <i class="fas fa-comments"></i>
-                    <div>প্রতিদিন কমপক্ষে ১০ মিনিট ইংরেজিতে কথা বলার চেষ্টা করুন, এমনকি যদি একাই বলেন</div>
-                </div>
-                <div class="tip">
-                    <i class="fas fa-film"></i>
-                    <div>ইংরেজি মুভি বা সিরিজ সাবটাইটেল সহ দেখুন এবং বাক্যগুলো নোট করুন</div>
-                </div>
-                <div class="tip">
-                    <i class="fas fa-book"></i>
-                    <div>প্রতিদিন নতুন ৫টি শব্দ শিখুন এবং সেগুলো ব্যবহার করার চেষ্টা করুন</div>
-                </div>
-                <div class="tip">
-                    <i class="fas fa-microphone-alt"></i>
-                    <div>নিজের কথা রেকর্ড করুন এবং উচ্চারণের ভুলগুলো শুনে সংশোধন করুন</div>
-                </div>
-            </div>
-        </div>
-        
-        <footer>
-            <p>ইংরেজি শিখুন - ফ্রিল্যান্সারদের জন্য | এই ওয়েবসাইটটি গিটহাবে আপলোড করার জন্য তৈরি করা হয়েছে</p>
-            <p>© ২০২৩ - সকল অধিকার সংরক্ষিত</p>
-        </footer>
-    </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
 
-    <script>
-        // Microphone button functionality
-        const micBtn = document.getElementById('micBtn');
-        const chatContainer = document.getElementById('chatContainer');
-        let isListening = false;
-        
-        micBtn.addEventListener('click', function() {
-            isListening = !isListening;
-            
-            if (isListening) {
-                micBtn.classList.add('active');
-                micBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="two-column-layout">
+                    <div class="hero-content">
+                        <!-- Trust Badge -->
+                        <div style="display: inline-flex; align-items: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 50px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.2);">
+                            <i class="fas fa-star" style="color: #FFD700; margin-right: 8px;"></i>
+                            <span style="color: white; font-size: 0.9rem; font-weight: 500;">Trusted by 500+ Businesses</span>
+                        </div>
+                        
+                        <h1 class="floating-animation">
+                            <span class="gradient-text" style="background: linear-gradient(135deg, #ffffff, #e3f2fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">USA Ad Campaign &</span><br>
+                            <span style="color: white;">Pixel Setup Experts</span>
+                        </h1>
+                        
+                        <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 2rem;">Maximize your ROI with professional Facebook, Google, and Instagram advertising campaigns. We handle everything from setup to optimization, so you can focus on growing your business.</p>
+                        
+                        <!-- Key Benefits -->
+                        <div style="display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; color: rgba(255,255,255,0.9);">
+                                <i class="fas fa-check-circle" style="color: #00c48c; margin-right: 8px;"></i>
+                                <span>24-48hr Setup</span>
+                            </div>
+                            <div style="display: flex; align-items: center; color: rgba(255,255,255,0.9);">
+                                <i class="fas fa-check-circle" style="color: #00c48c; margin-right: 8px;"></i>
+                                <span>300% Avg ROI Increase</span>
+                            </div>
+                            <div style="display: flex; align-items: center; color: rgba(255,255,255,0.9);">
+                                <i class="fas fa-check-circle" style="color: #00c48c; margin-right: 8px;"></i>
+                                <span>24/7 Support</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-buttons">
+                            <a href="contact.html" class="btn btn-primary get-audit-btn pulse-animation" style="position: relative; overflow: hidden;">
+                                <span style="position: relative; z-index: 2;">🚀 Get Free Audit</span>
+                                <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease;"></div>
+                            </a>
+                            <a href="contact.html" class="btn btn-secondary book-call-btn" style="position: relative;">
+                                <i class="fas fa-phone" style="margin-right: 8px;"></i>Book a Call
+                            </a>
+                        </div>
+                        
+                        <!-- Social Proof -->
+                        <div style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                            <span style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Trusted by:</span>
+                            <div style="display: flex; gap: 1rem; align-items: center;">
+                                <div style="background: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 8px; color: white; font-size: 0.8rem; font-weight: 500;">E-commerce</div>
+                                <div style="background: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 8px; color: white; font-size: 0.8rem; font-weight: 500;">SaaS</div>
+                                <div style="background: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 8px; color: white; font-size: 0.8rem; font-weight: 500;">Local Business</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="position: relative;">
+                        <!-- Floating Stats -->
+                        <div style="position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 1rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 3; text-align: center; min-width: 120px;">
+                            <div style="color: #0b66ff; font-size: 1.5rem; font-weight: bold;">500+</div>
+                            <div style="color: #666; font-size: 0.8rem;">Campaigns</div>
+                        </div>
+                        
+                        <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 1rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 3; text-align: center; min-width: 120px;">
+                            <div style="color: #00c48c; font-size: 1.5rem; font-weight: bold;">300%</div>
+                            <div style="color: #666; font-size: 0.8rem;">ROI Increase</div>
+                        </div>
+                        
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" alt="Digital Marketing Analytics Dashboard" class="hero-image floating-animation" style="border-radius: 25px; position: relative; z-index: 2;">
+                        
+                        <!-- Decorative Elements -->
+                        <div style="position: absolute; top: -20px; left: -20px; width: 100px; height: 100px; background: linear-gradient(135deg, #0b66ff, #00c48c); border-radius: 50%; opacity: 0.1; z-index: 1;"></div>
+                        <div style="position: absolute; bottom: -30px; right: -30px; width: 150px; height: 150px; background: linear-gradient(135deg, #00c48c, #0b66ff); border-radius: 50%; opacity: 0.1; z-index: 1;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Preview Section -->
+        <section class="section" id="services-preview">
+            <div class="container">
+                <div class="section-title">
+                    <!-- Section Badge -->
+                    <div style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #0b66ff, #00c48c); color: white; padding: 8px 20px; border-radius: 50px; margin-bottom: 1rem; font-size: 0.9rem; font-weight: 500;">
+                        <i class="fas fa-rocket" style="margin-right: 8px;"></i>
+                        Our Expertise
+                    </div>
+                    <h2 style="margin-bottom: 1rem;">Core Services That <span class="gradient-text">Drive Results</span></h2>
+                    <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">We specialize in comprehensive digital marketing solutions that drive real results for your business. Each service is designed to maximize your ROI and accelerate growth.</p>
+                </div>
                 
-                // Add user message to chat
-                const userMessage = document.createElement('div');
-                userMessage.classList.add('message', 'user-message');
-                userMessage.innerHTML = '<strong>আপনি:</strong> আমি এখন ফ্রিল্যান্সিং সম্পর্কে ইংরেজি শিখতে চাই।';
-                chatContainer.appendChild(userMessage);
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-                
-                // Simulate teacher response after delay
-                setTimeout(() => {
-                    const teacherMessage = document.createElement('div');
-                    teacherMessage.classList.add('message', 'teacher-message');
-                    teacherMessage.innerHTML = '<strong>শিক্ষক:</strong> Excellent choice! Let\'s start with common freelancing phrases. Repeat after me: "Could you please clarify the requirements?"';
-                    chatContainer.appendChild(teacherMessage);
-                    chatContainer.scrollTop = chatContainer.scrollHeight;
-                }, 2000);
-            } else {
-                micBtn.classList.remove('active');
-                micBtn.innerHTML = '<i class="fas fa-microphone"></i>';
-                
-                // Add user message to chat
-                const userMessage = document.createElement('div');
-                userMessage.classList.add('message', 'user-message');
-                userMessage.innerHTML = '<strong>আপনি:</strong> Could you please clarify the requirements?';
-                chatContainer.appendChild(userMessage);
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-                
-                // Simulate teacher response after delay
-                setTimeout(() => {
-                    const teacherMessage = document.createElement('div');
-                    teacherMessage.classList.add('message', 'teacher-message');
-                    teacherMessage.innerHTML = '<strong>শিক্ষক:</strong> Very good pronunciation! Now try this: "I need more time to complete this task."';
-                    chatContainer.appendChild(teacherMessage);
-                    chatContainer.scrollTop = chatContainer.scrollHeight;
-                }, 2000);
-            }
-        });
-        
-        // Vocabulary speak buttons
-        document.querySelectorAll('.speak-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const vocabItem = this.closest('.vocab-item');
-                const word = vocabItem.querySelector('h3').firstChild.textContent.trim();
-                
-                // Show speaking animation
-                const icon = this.querySelector('i');
-                icon.classList.remove('fa-volume-up');
-                icon.classList.add('fa-circle-notch', 'fa-spin');
-                
-                // Simulate speech
-                setTimeout(() => {
-                    icon.classList.remove('fa-circle-notch', 'fa-spin');
-                    icon.classList.add('fa-volume-up');
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2039&q=80" alt="Facebook and Google Ads Campaign" class="service-image">
+                        <div class="service-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Ad Campaign Setup</h3>
+                        <p>Professional setup and management of Facebook, Google, and Instagram advertising campaigns tailored to your business goals.</p>
+                        <a href="services.html" class="btn btn-outline">Learn More</a>
+                    </div>
                     
-                    // Show message in chat
-                    const teacherMessage = document.createElement('div');
-                    teacherMessage.classList.add('message', 'teacher-message');
-                    teacherMessage.innerHTML = `<strong>শিক্ষক:</strong> You just practiced: <span class="highlight">${word}</span>. Good job!`;
-                    chatContainer.appendChild(teacherMessage);
-                    chatContainer.scrollTop = chatContainer.scrollHeight;
-                }, 1500);
-            });
-        });
-        
-        // Lesson toggles
-        document.querySelectorAll('.lesson-title').forEach(title => {
-            title.addEventListener('click', function() {
-                const lessonItem = this.closest('.lesson-item');
-                lessonItem.classList.toggle('active');
-            });
-        });
-        
-        // Tab functionality
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                // Add active class to clicked tab
-                this.classList.add('active');
-            });
-        });
-    </script>
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Analytics and Pixel Tracking" class="service-image">
+                        <div class="service-icon">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <h3>Pixel & Tracking Setup</h3>
+                        <p>Complete implementation of Facebook Pixel, Google Analytics 4, Google Tag Manager, and Conversions API for accurate tracking.</p>
+                        <a href="services.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Campaign Optimization Dashboard" class="service-image">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Optimization & Reporting</h3>
+                        <p>Continuous campaign optimization and detailed performance reporting to ensure maximum return on your advertising investment.</p>
+                        <a href="services.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Target Audience Analysis" class="service-image">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Audience Targeting</h3>
+                        <p>Advanced audience research and targeting strategies to reach your ideal customers and increase conversion rates.</p>
+                        <a href="services.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="section" id="why-choose-us" style="background: white; position: relative; overflow: hidden;">
+            <!-- Background Pattern -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 25% 25%, rgba(11, 102, 255, 0.05) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(0, 196, 140, 0.05) 0%, transparent 50%); z-index: 1;"></div>
+            
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="section-title">
+                    <!-- Achievement Badge -->
+                    <div style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #FFD700, #FFA500); color: #333; padding: 8px 20px; border-radius: 50px; margin-bottom: 1rem; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">
+                        <i class="fas fa-trophy" style="margin-right: 8px;"></i>
+                        Award-Winning Agency
+                    </div>
+                    <h2 style="margin-bottom: 1rem;">Why Choose <span class="gradient-text">FSPTEAM</span>?</h2>
+                    <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">We're not just another digital marketing agency. We're your growth partners committed to delivering measurable results that transform your business.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="enhanced-card">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Success Trophy" class="feature-image">
+                        <div class="service-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="gradient-text">Proven Results</h3>
+                        <p>Over 500+ successful campaigns with an average ROI increase of 300% for our clients across various industries.</p>
+                    </div>
+                    
+                    <div class="enhanced-card">
+                        <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Fast Setup Clock" class="feature-image">
+                        <div class="service-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="gradient-text">Quick Setup</h3>
+                        <p>Get your campaigns live within 24-48 hours. We handle all the technical setup so you can start seeing results fast.</p>
+                    </div>
+                    
+                    <div class="enhanced-card">
+                        <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="24/7 Customer Support" class="feature-image">
+                        <div class="service-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="gradient-text">24/7 Support</h3>
+                        <p>Dedicated account manager and round-the-clock support to ensure your campaigns are always performing at their best.</p>
+                    </div>
+                    
+                    <div class="enhanced-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Transparent Analytics Dashboard" class="feature-image">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="gradient-text">Transparent Reporting</h3>
+                        <p>Real-time dashboards and weekly reports so you always know exactly how your campaigns are performing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials" style="position: relative;">
+            <!-- Background Overlay -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(11, 102, 255, 0.05), rgba(0, 196, 140, 0.05)); z-index: 1;"></div>
+            
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="section-title">
+                    <!-- Reviews Badge -->
+                    <div style="display: inline-flex; align-items: center; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 50px; margin-bottom: 1rem; font-size: 0.9rem; font-weight: 500; border: 1px solid rgba(255,255,255,0.3);">
+                        <div style="display: flex; margin-right: 8px;">
+                            <i class="fas fa-star" style="color: #FFD700; font-size: 0.8rem;"></i>
+                            <i class="fas fa-star" style="color: #FFD700; font-size: 0.8rem;"></i>
+                            <i class="fas fa-star" style="color: #FFD700; font-size: 0.8rem;"></i>
+                            <i class="fas fa-star" style="color: #FFD700; font-size: 0.8rem;"></i>
+                            <i class="fas fa-star" style="color: #FFD700; font-size: 0.8rem;"></i>
+                        </div>
+                        <span style="color: #333;">4.9/5 Client Rating</span>
+                    </div>
+                    <h2 style="margin-bottom: 1rem;">What Our <span class="gradient-text">Clients Say</span></h2>
+                    <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">Don't just take our word for it. Here's what our satisfied clients have to say about working with FSPTEAM and the results they've achieved.</p>
+                </div>
+                
+                <div class="testimonial-slider">
+                    <div class="testimonial active">
+                        <p class="testimonial-text">"FSPTEAM transformed our online presence completely. Our Facebook ad campaigns now generate 5x more leads than before, and their pixel setup helped us track every conversion accurately. Highly recommended!"</p>
+                        <div class="testimonial-author">Sarah Johnson</div>
+                        <div class="testimonial-company">CEO, TechStart Solutions</div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Working with FSPTEAM was a game-changer for our e-commerce business. They set up our Google Ads and Facebook campaigns perfectly, and we saw a 400% increase in ROAS within the first month."</p>
+                        <div class="testimonial-author">Michael Chen</div>
+                        <div class="testimonial-company">Founder, Urban Fashion Co.</div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"The team at FSPTEAM is incredibly professional and knowledgeable. Their pixel tracking setup helped us understand our customer journey better, leading to more targeted campaigns and higher conversions."</p>
+                        <div class="testimonial-author">Emily Rodriguez</div>
+                        <div class="testimonial-company">Marketing Director, HealthPlus</div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"I was struggling with my ad campaigns until I found FSPTEAM. They optimized everything from targeting to creative, and now I'm getting qualified leads at half the cost. Amazing results!"</p>
+                        <div class="testimonial-author">David Thompson</div>
+                        <div class="testimonial-company">Owner, Local Home Services</div>
+                    </div>
+                </div>
+                
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" id="cta" style="background: linear-gradient(135deg, #0b66ff 0%, #00c48c 100%); color: white; position: relative; overflow: hidden;">
+            <!-- Animated Background Elements -->
+            <div style="position: absolute; top: 20%; left: 10%; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%; animation: floating 6s ease-in-out infinite;"></div>
+            <div style="position: absolute; bottom: 20%; right: 15%; width: 150px; height: 150px; background: rgba(255,255,255,0.05); border-radius: 50%; animation: floating 8s ease-in-out infinite reverse;"></div>
+            <div style="position: absolute; top: 50%; left: 80%; width: 80px; height: 80px; background: rgba(255,255,255,0.08); border-radius: 50%; animation: floating 7s ease-in-out infinite;"></div>
+            
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="section-title">
+                    <!-- Urgency Badge -->
+                    <div style="display: inline-flex; align-items: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 50px; margin-bottom: 1.5rem; font-size: 0.9rem; font-weight: 500; border: 1px solid rgba(255,255,255,0.2);">
+                        <i class="fas fa-clock" style="color: #FFD700; margin-right: 8px;"></i>
+                        <span style="color: white;">Limited Time Offer</span>
+                    </div>
+                    
+                    <h2 style="color: white; font-size: 3rem; margin-bottom: 1rem;">Ready to <span style="background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">10X</span> Your Business?</h2>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem;">Join hundreds of successful businesses that trust FSPTEAM with their digital marketing. Get started today with a free audit of your current campaigns.</p>
+                    
+                    <!-- Value Proposition -->
+                    <div style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="background: rgba(255,255,255,0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem;">
+                                <i class="fas fa-gift" style="color: #FFD700; font-size: 1.5rem;"></i>
+                            </div>
+                            <div style="color: white; font-weight: 600;">Free Audit</div>
+                            <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Worth $500</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="background: rgba(255,255,255,0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem;">
+                                <i class="fas fa-rocket" style="color: #00c48c; font-size: 1.5rem;"></i>
+                            </div>
+                            <div style="color: white; font-weight: 600;">Quick Setup</div>
+                            <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">24-48 Hours</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="background: rgba(255,255,255,0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem;">
+                                <i class="fas fa-chart-line" style="color: #0b66ff; font-size: 1.5rem;"></i>
+                            </div>
+                            <div style="color: white; font-weight: 600;">Guaranteed Results</div>
+                            <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Or Money Back</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="contact.html" class="btn btn-secondary get-audit-btn pulse-animation" style="font-size: 1.1rem; padding: 15px 35px; position: relative; overflow: hidden;">
+                        <span style="position: relative; z-index: 2;">🎯 Get Free Audit Now</span>
+                        <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease;"></div>
+                    </a>
+                    <a href="contact.html" class="btn btn-outline book-call-btn" style="color: white; border-color: white; font-size: 1.1rem; padding: 15px 35px;">
+                        <i class="fas fa-phone" style="margin-right: 8px;"></i>Schedule a Call
+                    </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div style="margin-top: 3rem; text-align: center;">
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 1rem;">Trusted by 500+ businesses worldwide</div>
+                    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; color: rgba(255,255,255,0.7);">
+                            <i class="fas fa-shield-alt" style="margin-right: 8px;"></i>
+                            <span>100% Secure</span>
+                        </div>
+                        <div style="display: flex; align-items: center; color: rgba(255,255,255,0.7);">
+                            <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                        <div style="display: flex; align-items: center; color: rgba(255,255,255,0.7);">
+                            <i class="fas fa-money-bill-wave" style="margin-right: 8px;"></i>
+                            <span>Money-Back Guarantee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FSPTEAM</h4>
+                    <p>Your trusted partner for USA ad campaigns and pixel setup. We help businesses maximize their digital marketing ROI through expert campaign management and precise tracking implementation.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://facebook.com/fspteam" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/fspteam" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/fspteam" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://twitter.com/fspteam" class="social-link" aria-label="Twitter" target="_blank" rel="noopener">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <a href="services.html">Facebook Ad Campaigns</a>
+                    <a href="services.html">Google Ads Management</a>
+                    <a href="services.html">Instagram Advertising</a>
+                    <a href="services.html">Pixel Setup & Tracking</a>
+                    <a href="services.html">Campaign Optimization</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Our Services</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#" onclick="alert('Privacy Policy page would be here')">Privacy Policy</a>
+                    <a href="#" onclick="alert('Terms of Service page would be here')">Terms of Service</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> hello@fspteam.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New York, NY, USA</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 FSPTEAM. All rights reserved. | Designed for maximum conversions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- 
+    ADDITIONAL TRACKING SCRIPTS
+    Add your conversion tracking scripts here:
+    - Facebook Pixel events
+    - Google Analytics events
+    - Google Tag Manager events
+    -->
 </body>
 </html>
