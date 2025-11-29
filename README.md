@@ -1,150 +1,114 @@
-# FSPTEAM - Digital Marketing Agency Website
+# ashhasib WordPress Theme
 
-A complete demo website for a digital marketing agency specializing in USA Ad Campaign & Pixel Setup services.
+A modern, responsive WordPress theme for digital marketing agencies based on ashhasib.com.
 
-## 🚀 Features
+## Features
 
-- **Responsive Design**: Mobile-first approach with modern UI
-- **Professional Layout**: Clean, conversion-focused design
-- **Interactive Elements**: Smooth animations, testimonial slider, mobile menu
-- **Form Validation**: JavaScript-powered contact form with validation
-- **SEO Optimized**: Semantic HTML, meta tags, and accessibility features
-- **Tracking Ready**: Integration points for Facebook Pixel, Google Analytics, and GTM
+- Fully responsive design
+- WordPress-ready structure
+- Custom post types for Services and Testimonials
+- Contact form with AJAX submission
+- Newsletter subscription
+- Social media integration
+- Customizer options
+- SEO-friendly markup
+- Fast loading and optimized
 
-## 📁 Project Structure
+## Installation
+
+### For Static HTML Version:
+1. Open `index.html` in your browser
+2. All assets are organized in the `assets` folder
+
+### For WordPress Theme:
+1. Upload the theme folder to `/wp-content/themes/`
+2. Activate the theme in WordPress Admin > Appearance > Themes
+3. Configure theme settings in Appearance > Customize
+4. Add your logo in Appearance > Customize > Site Identity
+5. Set up menus in Appearance > Menus
+
+## File Structure
 
 ```
-fspteam/
-├── index.html          # Homepage with hero section and services
-├── about.html          # About page with team and mission
-├── services.html       # Detailed services page
-├── contact.html        # Contact form and information
+ashhasib/
+├── index.html              # Static HTML homepage
+├── style.css               # WordPress theme stylesheet (required)
+├── functions.php           # WordPress theme functions
+├── template-parts/         # Reusable template parts
+│   ├── header.php         # Header template
+│   └── footer.php         # Footer template
 ├── assets/
 │   ├── css/
-│   │   └── style.css   # Complete stylesheet with responsive design
-│   └── js/
-│       └── main.js     # JavaScript for interactivity and tracking
-└── README.md           # This file
+│   │   └── style.css      # Main stylesheet
+│   ├── js/
+│   │   └── main.js        # JavaScript functionality
+│   └── images/            # Image assets (add your images here)
+│       ├── logo.png
+│       ├── hero-person.jpg
+│       ├── about-person.jpg
+│       ├── website-mockup.png
+│       ├── companies/     # Company logos
+│       └── testimonials/  # Testimonial images
+└── README.md              # This file
 ```
 
-## 🎨 Design System
+## Converting to WordPress
 
-- **Primary Color**: Blue (#0b66ff)
-- **Secondary Color**: Green (#00c48c)
-- **Background**: Light Gray (#f5f7fa)
-- **Typography**: Inter (headings), Roboto (body)
-- **Icons**: Font Awesome 6.4.0
+The theme is already structured for WordPress conversion:
 
-## 🛠️ Technologies Used
+1. The `index.html` contains PHP template tags for WordPress
+2. `functions.php` includes all necessary WordPress functionality
+3. `template-parts/` folder contains modular header and footer
+4. Custom post types are registered for Services and Testimonials
 
-- **HTML5**: Semantic markup with accessibility features
-- **CSS3**: Flexbox, Grid, animations, and responsive design
-- **JavaScript**: Vanilla JS for all interactions
-- **Font Awesome**: Icons and visual elements
-- **Google Fonts**: Inter and Roboto font families
+## Customization
 
-## 📱 Pages Overview
+### Colors
+Edit CSS variables in `assets/css/style.css`:
+```css
+:root {
+    --primary-color: #FF8C42;
+    --secondary-color: #4CAF50;
+    --dark-bg: #2C2C2C;
+}
+```
 
-### 🏠 Homepage (index.html)
-- Hero section with clear value proposition
-- Services preview cards
-- "Why Choose Us" section
-- Testimonials slider (auto-rotating)
-- Call-to-action sections
+### Content
+- Update text content in `index.html`
+- Add images to `assets/images/` folder
+- Modify sections as needed
 
-### 👨‍💼 About Page (about.html)
-- Agency introduction and statistics
-- Mission & Vision statements
-- Team member profiles
-- Core values and differentiators
+### WordPress Customizer
+Access Appearance > Customize to modify:
+- Site logo
+- Social media links
+- Colors and fonts
+- Menus
 
-### 💼 Services Page (services.html)
-- Detailed service descriptions
-- Pricing information
-- Platform expertise breakdown
-- Service-specific CTAs
+## Required Images
 
-### 📞 Contact Page (contact.html)
-- Contact form with validation
-- Business information
-- FAQ section
-- Map placeholder for Google Maps integration
+Add these images to the `assets/images/` folder:
+- `logo.png` - Site logo
+- `hero-person.jpg` - Hero section image
+- `about-person.jpg` - About section image
+- `website-mockup.png` - Website showcase
+- `trustpilot-logo.png` - Trustpilot badge
+- Company logos in `companies/` folder
+- Testimonial photos in `testimonials/` folder
 
-## ⚡ JavaScript Features
+## Browser Support
 
-- **Responsive Navigation**: Mobile menu toggle
-- **Smooth Scrolling**: Anchor link navigation
-- **Testimonial Slider**: Auto-rotating with manual controls
-- **Form Validation**: Real-time validation with error messages
-- **Click Tracking**: Console logging for "Book a Call" buttons
-- **Scroll Animations**: Elements fade in on scroll
-- **Header Effects**: Background changes on scroll
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers
 
-## 🔧 Setup Instructions
+## Credits
 
-1. **Download/Clone** the project files
-2. **Open** `index.html` in any modern web browser
-3. **No build process required** - runs directly in browser
-4. **For development**: Use a local server for best experience
+- Font Awesome for icons
+- Design inspired by ashhasib.com
 
-## 📊 Tracking Integration
+## License
 
-The website is prepared for tracking pixel integration:
-
-### Facebook Pixel
-Add your Facebook Pixel code to the `<head>` section of each HTML file. Integration points are marked in the code.
-
-### Google Analytics 4
-Add your GA4 tracking code to the `<head>` section. The JavaScript includes event tracking for form submissions and button clicks.
-
-### Google Tag Manager
-Add GTM container code to `<head>` and `<body>` sections as indicated in the comments.
-
-## 🎯 Conversion Optimization
-
-- **Clear CTAs**: Multiple "Get Free Audit" and "Book a Call" buttons
-- **Social Proof**: Testimonials and client success stories
-- **Trust Signals**: Professional design, team photos, contact information
-- **Mobile Optimized**: Responsive design for all devices
-- **Fast Loading**: Optimized CSS and JavaScript
-
-## 🔍 SEO Features
-
-- **Meta Tags**: Title, description, keywords for each page
-- **Open Graph**: Social media sharing optimization
-- **Semantic HTML**: Proper heading structure and landmarks
-- **Alt Text**: Image accessibility (placeholders included)
-- **Schema Ready**: Structured data integration points
-
-## 📞 Contact Information
-
-- **Email**: hello@fspteam.com
-- **Phone**: +1 (555) 123-4567
-- **Address**: New York, NY, USA
-- **Hours**: Mon-Fri: 9AM-6PM EST
-
-## 🚀 Going Live
-
-To deploy this website:
-
-1. **Upload files** to your web hosting provider
-2. **Update contact information** with your actual details
-3. **Add tracking codes** (Facebook Pixel, Google Analytics)
-4. **Replace placeholder images** with actual photos
-5. **Configure contact form** to send emails to your server
-6. **Add Google Maps embed** to contact page
-
-## 📝 Customization
-
-- **Colors**: Update CSS variables in `style.css`
-- **Content**: Edit HTML files with your specific information
-- **Images**: Replace placeholder images in the `assets/images/` folder
-- **Tracking**: Add your actual tracking IDs in the JavaScript
-
-## 🎉 Ready to Use
-
-This website is fully functional and ready to use. Simply open `index.html` in a web browser to see the complete FSPTEAM digital marketing agency website in action!
-
----
-
-**Built with ❤️ for maximum conversions and user experience.**
+This theme is licensed under the GNU General Public License v2 or later.
