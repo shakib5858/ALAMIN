@@ -1,0 +1,5 @@
+<svg width="120" height="30" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="30" fill="#00B67A" rx="4"/>
+  <polygon points="10,10 12,16 18,16 13,20 15,26 10,22 5,26 7,20 2,16 8,16" fill="#FFFFFF"/>
+  <text x="25" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">Trustpilot</text>
+</svg>
