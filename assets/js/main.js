@@ -15,15 +15,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Header scroll effect
+    // Header scroll effect with hide/show
     let lastScroll = 0;
+    const scrollThreshold = 100;
+    
     window.addEventListener('scroll', function() {
         const currentScroll = window.pageYOffset;
         
+        // Add scrolled class for styling
         if (currentScroll > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
+        }
+        
+        // Hide/show header on scroll
+        if (currentScroll > scrollThreshold) {
+            if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+                // Scrolling down
+                header.classList.remove('scroll-up');
+                header.classList.add('scroll-down');
+            } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+                // Scrolling up
+                header.classList.remove('scroll-down');
+                header.classList.add('scroll-up');
+            }
+        } else {
+            // At top of page
+            header.classList.remove('scroll-down', 'scroll-up');
         }
         
         lastScroll = currentScroll;

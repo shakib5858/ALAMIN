@@ -1,0 +1,228 @@
+/* ===================================
+   Testimonials Slider
+   =================================== */
+.testimonials-section {
+    padding: 90px 0;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.testimonials-section h2 {
+    font-size: 42px;
+    margin-bottom: 16px;
+    font-weight: 800;
+}
+
+.trustpilot-badge {
+    margin-bottom: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.trustpilot-badge span {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.trustpilot-badge img {
+    height: 28px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Slider Wrapper */
+.testimonials-slider-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+/* Slider Container */
+.testimonials-slider {
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+/* Slider Track */
+.testimonials-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+    min-width: calc(33.333% - 18.67px);
+    flex: 0 0 calc(33.333% - 18.67px);
+    background: var(--light-bg);
+    padding: 32px;
+    border-radius: 16px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    margin-right: 28px;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:last-child {
+    margin-right: 0;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.testimonial-card p {
+    color: var(--text-light);
+    margin-bottom: 24px;
+    font-style: italic;
+    line-height: 1.7;
+    font-size: 16px;
+    min-height: 120px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.testimonial-author img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--white);
+    box-shadow: var(--shadow-sm);
+}
+
+.testimonial-author strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 2px;
+    color: var(--text-dark);
+}
+
+.testimonial-author span {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+/* Slider Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--white);
+    border: 2px solid var(--border-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: var(--text-dark);
+    font-size: 18px;
+}
+
+.slider-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+}
+
+.slider-btn-prev {
+    left: 0;
+}
+
+.slider-btn-next {
+    right: 0;
+}
+
+/* Slider Dots */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+}
+
+.slider-dot.active {
+    background: var(--primary-color);
+    width: 32px;
+    border-radius: 6px;
+}
+
+.slider-dot:hover {
+    background: var(--primary-color);
+    opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .testimonial-card {
+        min-width: calc(50% - 14px);
+        flex: 0 0 calc(50% - 14px);
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonials-slider-wrapper {
+        padding: 0 50px;
+    }
+    
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    .testimonial-card {
+        min-width: 100%;
+        flex: 0 0 100%;
+        padding: 28px;
+        margin-right: 0;
+    }
+    
+    .testimonial-card p {
+        min-height: auto;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-slider-wrapper {
+        padding: 0 40px;
+    }
+    
+    .slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+    
+    .testimonial-card {
+        padding: 24px;
+    }
+}
